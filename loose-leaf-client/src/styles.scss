@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+@import './app/themes.scss';
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+body,
+html {
+    height: 100%;
+    margin: 0;
+}
+
+.mat-tab-body-wrapper {
+    flex-grow: 1;
+}
+
+.fill-remaining-space {
+    flex: 1 1 auto;
+}

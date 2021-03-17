@@ -1,0 +1,30 @@
+<div class="base">
+  <mat-toolbar color="primary">
+    <span>Loose Leaf Community</span>
+    <span class="fill-remaining-space"></span>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="side" opened class="sidenav" [class.wide]="wideSidenav()">
+      <button mat-flat-button color="" routerLink="/home" routerLinkActive="mat-accent" queryParamsHandling="merge">
+        <mat-icon>home</mat-icon>
+        <ng-container *ngIf="wideSidenav()">Home</ng-container>
+      </button>
+
+      <button mat-flat-button color="" routerLink="/books" routerLinkActive="mat-accent" queryParamsHandling="merge">
+        <mat-icon>menu_book</mat-icon>
+        <ng-container *ngIf="wideSidenav()">Books</ng-container>
+      </button>
+
+      <!-- bottom button -->
+      <button mat-flat-button color="" class="bottom" (click)="setWideSidenav(!wideSidenav())">
+        <mat-icon *ngIf="wideSidenav()">chevron_left</mat-icon>
+        <mat-icon *ngIf="!wideSidenav()">chevron_right</mat-icon>
+        <ng-container *ngIf="wideSidenav()">Collapse sidebar</ng-container>
+      </button>
+    </mat-sidenav>
+    <mat-sidenav-content class="content-container" [class.wide-nav]="wideSidenav()">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
