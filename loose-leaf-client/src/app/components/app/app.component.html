@@ -6,14 +6,22 @@
 
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav mode="side" opened class="sidenav" [class.wide]="wideSidenav()">
-      <button mat-flat-button color="" routerLink="/home" routerLinkActive="mat-accent" queryParamsHandling="merge">
+      <button mat-flat-button class="menu-btn" color="" routerLink="/home" routerLinkActive="mat-accent" queryParamsHandling="merge">
         <mat-icon>home</mat-icon>
         <ng-container *ngIf="wideSidenav()">Home</ng-container>
       </button>
 
-      <button mat-flat-button color="" routerLink="/books" routerLinkActive="mat-accent" queryParamsHandling="merge">
+      <button mat-flat-button class="menu-btn" color="" routerLink="/books" routerLinkActive="mat-accent" queryParamsHandling="merge">
         <mat-icon>menu_book</mat-icon>
         <ng-container *ngIf="wideSidenav()">Find Books</ng-container>
+      </button>
+      <button mat-flat-button class="menu-btn" color="" routerLink="/lenders" routerLinkActive="mat-accent" queryParamsHandling="merge">
+        <mat-icon>person_search</mat-icon>
+        <ng-container *ngIf="wideSidenav()">Search Lenders</ng-container>
+      </button>
+      <button mat-flat-button class="menu-btn" color="" routerLink="/loans" routerLinkActive="mat-accent" queryParamsHandling="merge">
+        <mat-icon>multiple_stop</mat-icon>
+        <ng-container *ngIf="wideSidenav()">My Loans/Requests</ng-container>
       </button>
 
       <!-- bottom button -->
