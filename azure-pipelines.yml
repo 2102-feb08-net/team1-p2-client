@@ -1,0 +1,67 @@
+# Node.js with Angular
+# Build a Node.js project that uses Angular.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+  branches:
+    include:
+    - main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  appDirectory: loose-leaf-client
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '14.x'
+  displayName: 'Install Node.js'
+
+- script: npm ci
+  displayName: npm install
+  workingDirectory: $(appDirectory)
+
+- script: npx ng build
+  displayName: ng build
+  workingDirectory: $(appDirectory)
+
+- script: npx ng lint
+  displayName: ng lint
+  workingDirectory: $(appDirectory)
+
+- script: npx ng test --browsers ChromeHeadless --no-watch --code-coverage
+  displayName: ng test
+  workingDirectory: $(appDirectory)
+
+# ng e2e... exercise for the reader
+
+- task: SonarCloudPrepare@1
+  displayName: sonar prepare analysis
+  inputs:
+    SonarCloud: 'Sonar Cloud'
+    organization: '2102-feb08-net'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: '2102-feb08-net_team1-p2-client'
+    cliProjectName: 'team1-p2-client'
+    cliSources: 
+    extraProperties: 'sonar.javascript.lcov.reportPaths=$(appDirectory)/coverage/loose-leaf-client/lcov.info'
+
+- task: SonarCloudAnalyze@1
+  displayName: sonar run analysis
+
+- task: SonarCloudPublish@1
+  displayName: sonar publish analysis result
+  inputs:
+    pollingTimeoutSec: '300'
+
+- task: AzureRmWebAppDeployment@4
+  displayName: app service deploy
+  inputs:
+    ConnectionType: 'AzureRM'
+    appType: 'webApp'
+    WebAppName: 'loooseleaf'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
