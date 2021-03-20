@@ -8,17 +8,17 @@ import { BookService } from '../../book.service';
   styleUrls: ['./book-search.component.scss'],
 })
 export class BookSearchComponent implements OnInit {
-  //searchTerm: string;    //add searchTerm to panel
+  searchTerm: string = "";    //add searchTerm to panel
   books: Book[] = [];
-  selectedBook: Book;
+  selectedBook?: Book;
   constructor(private readonly bookService: BookService) {}
 
   ngOnInit(): void {}
 
   searchByTerm(searchTerm: string) {
-    this.bookService.getBookFromApi(searchTerm).subscribe((response: Book) => {
-      this.books = this.books.concat(response);
-      this.selectedBook = response;
+    this.bookService.getBookFromApi(searchTerm).subscribe(response => {
+      this.books = this.books.concat(response as Book);
+      this.selectedBook = response as Book;
     });
   }
 }

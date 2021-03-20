@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Book } from '../../book-interface';
 
 @Component({
@@ -7,10 +7,13 @@ import { Book } from '../../book-interface';
   styleUrls: ['./book-panel.component.scss']
 })
 export class BookPanelComponent implements OnInit {
-
+  @Input() book: any;
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  getLogo() {
+
+  }
 }

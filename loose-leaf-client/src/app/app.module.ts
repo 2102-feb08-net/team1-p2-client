@@ -15,13 +15,17 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { BookPanelComponent } from './components/book-panel/book-panel.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { UserLoansComponent } from './components/user-loans/user-loans.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     BookSearchComponent,
-    BookPanelComponent
+    BookPanelComponent,
+    UserDetailsComponent,
+    UserLoansComponent
   ],
   imports: [
     BrowserModule,
