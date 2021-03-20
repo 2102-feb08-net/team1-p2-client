@@ -1,1 +1,29 @@
-<p>book search works!</p>
+<div style="width: 100%; height: 100%; display: flex;">
+    <div style="width: 50%; display: block">
+      <h1>
+        Book Search
+      </h1>
+      <div style="display: flex">
+        <input placeholder="Book ID" type="text" [(ngModel)]="searchTerm">
+        <button (click)="searchByTerm(searchTerm)" style="margin-left: 10px">Search</button>
+      </div>
+      <div *ngIf="selectedBook" style="display: flex">
+        <div style="display: block">
+          <h2>Title</h2>
+          <span>
+            {{selectedBook?.volumeInfo?.title}}
+          </span>
+        </div>
+        <div style="display: block; margin-left: 20px">
+          <h2>ISBN</h2>
+          <span>
+            {{selectedBook?.volumeInfo?.industryIdentifiers[0]?.type?.replace('_', ' ')}} — {{selectedBook?.volumeInfo?.industryIdentifiers[0]?.identifier}}
+          </span>
+          <span style="display: block" *ngIf="selectedBook?.volumeInfo?.industryIdentifiers[1]?.type">
+            {{selectedBook?.volumeInfo?.industryIdentifiers[1]?.type?.replace('_', ' ')}} — {{selectedBook?.volumeInfo?.industryIdentifiers[1]?.identifier}}
+          </span>
+        </div>
+      </div>
+    </div>
+    <app-book-info-panel  *ngIf="selectedBook" [book]="selectedBook" style="height: 100%; width: 50%;"></app-book-info-panel>
+  </div>
