@@ -14,7 +14,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { BookPanelComponent } from './book-panel/book-panel.component';
+import { BookPanelComponent } from './components/book-panel/book-panel.component';
 
 @NgModule({
   declarations: [
