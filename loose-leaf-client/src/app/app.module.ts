@@ -29,7 +29,7 @@ import { UserService } from './services/user.service';
 import { UserSearchComponent } from './components/user-search/user-search.component';
 import { AuthButtonComponent } from './components/auth-button/auth-button.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { UserMetadataComponent } from './user-metadata/user-metadata.component';
+import { UserMetadataComponent } from './components/user-metadata/user-metadata.component';
 
 @NgModule({
   declarations: [
@@ -58,37 +58,37 @@ import { UserMetadataComponent } from './user-metadata/user-metadata.component';
     MatAutocompleteModule,
     MatSelectModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    AuthModule.forRoot({
+      domain: 'looseleafcommunity.us.auth0.com',
+      clientId: 'igxkfAyb76tmu31PoJNIxqHlFQ6XgmDi',
+    
+      // Request this audience at user authentication time
+      audience: 'https://looseleafcommunity.us.auth0.com/api/v2/',
+    
+      // Request this scope at user authentication time
+      scope: 'read:current_user',            
+      httpInterceptor: {
+        allowedList: [
+          {
+            // Match any request that starts 'https://looseleafcommunity.us.auth0.com/api/v2/' (note the asterisk)
+            uri: 'https://looseleafcommunity.us.auth0.com/api/v2/*',
+            tokenOptions: {
+              // The attached token should target this audience
+              audience: 'https://looseleafcommunity.us.auth0.com/api/v2/',
+    
+              // The attached token should have these scopes
+              scope: 'read:current_user'
+            }
+          }
+        ]
+      }
+    }),
   ],
   providers: [
     BookService,
     UserService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
-    // AuthModule.forRoot({
-    //   domain: 'looseleafcommunity.us.auth0.com',
-    //   clientId: 'igxkfAyb76tmu31PoJNIxqHlFQ6XgmDi',
-    
-    //   // Request this audience at user authentication time
-    //   audience: 'https://looseleafcommunity.us.auth0.com/api/v2/',
-    
-    //   // Request this scope at user authentication time
-    //   scope: 'read:current_user',            
-    //   httpInterceptor: {
-    //     allowedList: [
-    //       {
-    //         // Match any request that starts 'https://looseleafcommunity.us.auth0.com/api/v2/' (note the asterisk)
-    //         uri: 'https://looseleafcommunity.us.auth0.com/api/v2/*',
-    //         tokenOptions: {
-    //           // The attached token should target this audience
-    //           audience: 'https://looseleafcommunity.us.auth0.com/api/v2/',
-    
-    //           // The attached token should have these scopes
-    //           scope: 'read:current_user'
-    //         }
-    //       }
-    //     ]
-    //   }
-    // }),
   ],
   bootstrap: [AppComponent]
 })
