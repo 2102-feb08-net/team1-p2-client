@@ -1,7 +1,7 @@
 @import "src/named_variables.scss";
 .row {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     width: 100%;
     padding-top: 10px;
     padding-bottom: 10px;

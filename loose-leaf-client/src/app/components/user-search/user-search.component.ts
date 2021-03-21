@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/interfaces/user';
-import { Book } from 'src/app/interfaces/book';
+import { OwnedBook } from 'src/app/interfaces/owned-book-interface';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class UserSearchComponent implements OnInit {
   userList: User[] = [];
   searchUserName: string | undefined;
   selectedUser: User | undefined;
-  selectedUsersBooks: Book[] = [];
+  selectedUsersBooks: OwnedBook[] = [];
   constructor(private us: UserService) { }
 
   ngOnInit(): void {
@@ -36,7 +36,7 @@ export class UserSearchComponent implements OnInit {
 
     if (this.selectedUser != undefined) {
       this.us.getUsersBooks(this.selectedUser.id).then(resp => {
-        this.selectedUsersBooks = resp as Book[];
+        this.selectedUsersBooks = resp as OwnedBook[];
         console.log(this.selectedUsersBooks);
       });
     }

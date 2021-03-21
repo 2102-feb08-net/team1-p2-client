@@ -1,13 +1,25 @@
 <mat-card class="card">
   <mat-card-header>
-    <mat-card-title>
-      {{book?.title}}
+    <mat-card-title aria-label="book?.book?.title">
+      {{ book?.book?.title! | truncate:[22, '...'] }}
     </mat-card-title>
+    <mat-card-subtitle>
+      {{ book?.book?.author! | truncate:[30, '...'] }}
+    </mat-card-subtitle>
+    
   </mat-card-header>
+  <mat-divider></mat-divider>
   <mat-card-content>
-    {{book?.isbn?.isbnValue}}
+    <div class="row centered">
+      <img class="thumbnail" [src]="book?.book?.thumbnail" alt="book thumbnail">
+    </div>
+    <div class="row centered">
+      <h3 class="mat-h3">Condition: {{book?.condition}}</h3>
+    </div>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-button color="primary">Borrow</button>
-  </mat-card-actions>
+  <mat-divider></mat-divider>
+    <mat-card-actions class="row">
+      <h3 class="mat-h3" [ngClass]="getAvailabilityClass()">{{book?.availability}}</h3>
+      <button mat-flat-button color="primary" [disabled]="!canBorrow()">Borrow</button>
+    </mat-card-actions>
 </mat-card>

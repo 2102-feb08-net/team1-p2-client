@@ -7,10 +7,10 @@
         </mat-option>
     </mat-autocomplete>
   </mat-form-field>
-  <button color="primary" mat-raised-button (click)="search()"><mat-icon>search</mat-icon></button>
+  <button color="primary" mat-mini-fab (click)="search()"><mat-icon>search</mat-icon></button>
 </div>
 
-<div class="row" *ngIf="selectedUser">
+<div class="row space-evenly" *ngIf="selectedUser">
   <h1>{{selectedUser.userName}}</h1>
 </div>
 
