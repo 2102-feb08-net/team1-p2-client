@@ -6,19 +6,7 @@ import { domain, clientId, audience, serverUrl } from '../../auth_config.json';
 
 export const environment = {
   production: false,
-  auth: {
-    domain,
-    clientId,
-    redirectUri: window.location.origin,
-    audience,
-    httpInterceptor: {
-      allowedList: [{
-        uri: `${serverUrl}/api/*`}],
-    }
-  },
-  dev: {
-    serverUrl,
-  },
+  serverURL: "http://looseleafcommunity.azurewebsites.net"
 };
 /*
  * For easier debugging in development mode, you can import the following file

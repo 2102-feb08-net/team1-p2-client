@@ -20,7 +20,7 @@ export class UserMetadataComponent implements OnInit {
       concatMap((user) =>
         // Use HttpClient to make the call
         this.http.get(
-          encodeURI(`https://looseleafcommunity.us.auth0.com/api/v2/users/${user.sub}`)
+          encodeURI(`https://looseleafcommunity.us.auth0.com/api/v2/users/${user?.sub}`)
         )
       ),
       pluck('user_id'),

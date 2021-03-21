@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { Observable } from 'rxjs';
-import { Loan, LoanRequest } from '../loan-interface';
+import { Loan, LoanRequest } from '../interfaces/loan-interface';
 
 @Injectable({
   providedIn: 'root'

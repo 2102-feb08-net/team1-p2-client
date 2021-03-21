@@ -28,10 +28,6 @@ steps:
   displayName: ng build
   workingDirectory: $(appDirectory)
 
-- script: npx ng lint
-  displayName: ng lint
-  workingDirectory: $(appDirectory)
-
 - script: npx ng test --browsers ChromeHeadless --no-watch --code-coverage
   displayName: ng test
   workingDirectory: $(appDirectory)
