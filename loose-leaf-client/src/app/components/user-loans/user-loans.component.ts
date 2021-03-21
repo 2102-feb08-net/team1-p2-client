@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { LoanService } from 'src/app/services/loan.service';
+import {Loan } from '../../loan-interface';
+
+import {MDCDataTable} from '@material/data-table';
+
 
 @Component({
   selector: 'app-user-loans',
@@ -7,9 +12,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserLoansComponent implements OnInit {
 
-  constructor() { }
+  public loans : Loan[] = [];
+  constructor(private loanService: LoanService) { }
 
   ngOnInit(): void {
+    this.getLoans();
   }
 
+  getLoans(){
+    this.loanService.getLoans()
+    .subscribe(loans => this.loans = loans);
+  }
 }
