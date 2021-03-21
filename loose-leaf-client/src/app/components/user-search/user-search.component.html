@@ -1,1 +1,21 @@
-<p>user-search works!</p>
+<div class="row centered">
+  <mat-form-field class="search">
+    <input matInput type="text" aria-label="Search for a user" placeholder="Search for a user" [(ngModel)]="searchUserName" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of userList" [value]="option.userName">
+          {{option.userName}}
+        </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <button color="primary" mat-raised-button (click)="search()"><mat-icon>search</mat-icon></button>
+</div>
+
+<div class="row" *ngIf="selectedUser">
+  <h1>{{selectedUser.userName}}</h1>
+</div>
+
+<div class="row space-evenly">
+  <app-book-panel *ngFor="let b of selectedUsersBooks" [book]="b"></app-book-panel>
+</div>
+
+

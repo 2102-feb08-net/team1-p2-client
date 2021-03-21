@@ -1,7 +1,4 @@
-$matToolbarHeight: 64px;
-$wideSideNavWidth: 12em;
-$thinSideNavWidth: 4.2em;
-$buttonHeight: 6vh;
+@import "src/named_variables.scss";
 .base {
     position: absolute;
     top: 0;
