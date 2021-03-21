@@ -27,5 +27,4 @@ export class LoanService {
   submitLoan(loan: LoanRequest) : Observable<LoanRequest> {
     return this.http.post<LoanRequest>(this.endpoint + `loans`, loan, this.httpOptions);
   }
-
 }
