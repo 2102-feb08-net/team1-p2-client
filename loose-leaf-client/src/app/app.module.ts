@@ -5,10 +5,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
 import { HomeComponent } from './components/home/home.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BookService } from './services/book.service';
 import { BookSearchComponent } from './components/book-search/book-search.component';
 import { FormsModule } from '@angular/forms';
+
+import { AuthModule } from '@auth0/auth0-angular';
+import { AuthHttpInterceptor } from '@auth0/auth0-angular';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -24,6 +27,9 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
 import { UserLoansComponent } from './components/user-loans/user-loans.component';
 import { UserService } from './services/user.service';
 import { UserSearchComponent } from './components/user-search/user-search.component';
+import { AuthButtonComponent } from './components/auth-button/auth-button.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { UserMetadataComponent } from './user-metadata/user-metadata.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +39,10 @@ import { UserSearchComponent } from './components/user-search/user-search.compon
     BookPanelComponent,
     UserDetailsComponent,
     UserLoansComponent,
-    UserSearchComponent
+    UserSearchComponent,
+    AuthButtonComponent,
+    UserProfileComponent,
+    UserMetadataComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +62,8 @@ import { UserSearchComponent } from './components/user-search/user-search.compon
   ],
   providers: [
     BookService,
-    UserService
+    UserService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

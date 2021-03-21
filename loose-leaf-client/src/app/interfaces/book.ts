@@ -5,4 +5,5 @@ export interface Book {
   genres: string[];
   ownerUsername: string;
   isbn: string;
+  thumbnail: string;
 }
