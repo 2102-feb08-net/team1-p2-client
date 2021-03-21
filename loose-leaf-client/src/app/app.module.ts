@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AuthModule } from '@auth0/auth0-angular';
 import { AuthHttpInterceptor } from '@auth0/auth0-angular';
+import { environment as env } from '../environments/environment';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -46,7 +47,7 @@ import { UserMetadataComponent } from './user-metadata/user-metadata.component';
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,
-    AuthModule.forRoot({
+    AuthModule.forRoot({ 
       domain: 'looseleafcommunity.us.auth0.com',
       clientId: 'igxkfAyb76tmu31PoJNIxqHlFQ6XgmDi',
     
@@ -54,7 +55,9 @@ import { UserMetadataComponent } from './user-metadata/user-metadata.component';
       audience: 'https://looseleafcommunity.us.auth0.com/api/v2/',
     
       // Request this scope at user authentication time
-      scope: 'read:current_user',            
+      scope: 'read:current_user',
+    
+      // Specify configuration for the interceptor              
       httpInterceptor: {
         allowedList: [
           {
@@ -66,6 +69,17 @@ import { UserMetadataComponent } from './user-metadata/user-metadata.component';
     
               // The attached token should have these scopes
               scope: 'read:current_user'
+            }
+          },
+          {
+
+            uri: 'https://looseleafcommunity.azurewebsites.net/api/*',
+            tokenOptions: {
+              // The attached token should target this audience
+              audience: 'https://looseleafcommunity.azurewebsites.net',
+    
+              // The attached token should have these scopes
+              scope: 'read:loans'
             }
           }
         ]

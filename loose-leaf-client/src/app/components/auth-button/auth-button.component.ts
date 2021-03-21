@@ -9,4 +9,12 @@ import { DOCUMENT } from '@angular/common';
 })
 export class AuthButtonComponent {
   constructor(@Inject(DOCUMENT) public document: Document, public auth: AuthService) {}
+
+  login() {
+    this.auth.loginWithRedirect();
+  }
+
+  logout() {
+    this.auth.logout({ returnTo: document.location.origin });
+  }
 }
