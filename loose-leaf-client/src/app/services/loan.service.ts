@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
 import { Observable } from 'rxjs';
 import { Loan, LoanRequest } from '../loan-interface';
 
@@ -10,11 +11,13 @@ export class LoanService {
 
   private endpoint = 'https://looseleafcommunity.azurewebsites.net/api/'
 
+  private accessToken = '';
+
   httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
+    headers: new HttpHeaders({'Content-Type': 'application/json', 'authorization': `Bearer ${this.accessToken}`})
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(public auth: AuthService, private http: HttpClient) { }
 
   getLoan(id: number): Observable<Loan> {
     return this.http.get<Loan>(this.endpoint + `loans/${id}`);
