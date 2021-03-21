@@ -64,6 +64,31 @@ import { UserMetadataComponent } from './user-metadata/user-metadata.component';
     BookService,
     UserService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
+    // AuthModule.forRoot({
+    //   domain: 'looseleafcommunity.us.auth0.com',
+    //   clientId: 'igxkfAyb76tmu31PoJNIxqHlFQ6XgmDi',
+    
+    //   // Request this audience at user authentication time
+    //   audience: 'https://looseleafcommunity.us.auth0.com/api/v2/',
+    
+    //   // Request this scope at user authentication time
+    //   scope: 'read:current_user',            
+    //   httpInterceptor: {
+    //     allowedList: [
+    //       {
+    //         // Match any request that starts 'https://looseleafcommunity.us.auth0.com/api/v2/' (note the asterisk)
+    //         uri: 'https://looseleafcommunity.us.auth0.com/api/v2/*',
+    //         tokenOptions: {
+    //           // The attached token should target this audience
+    //           audience: 'https://looseleafcommunity.us.auth0.com/api/v2/',
+    
+    //           // The attached token should have these scopes
+    //           scope: 'read:current_user'
+    //         }
+    //       }
+    //     ]
+    //   }
+    // }),
   ],
   bootstrap: [AppComponent]
 })

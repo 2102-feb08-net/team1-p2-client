@@ -4,6 +4,10 @@ export interface Book {
   imageUrl: string;
   genres: string[];
   ownerUsername: string;
-  isbn: string;
+  isbn: ISBN;
   thumbnail: string;
+}
+
+interface ISBN {
+  isbnValue: string;
 }

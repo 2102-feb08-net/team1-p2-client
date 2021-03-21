@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoanService } from 'src/app/services/loan.service';
-import {Loan } from '../../loan-interface';
+import {Loan } from '../../interfaces/loan-interface';
 
 import {MDCDataTable} from '@material/data-table';
 
