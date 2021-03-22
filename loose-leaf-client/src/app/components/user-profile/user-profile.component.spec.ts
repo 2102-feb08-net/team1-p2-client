@@ -1,14 +1,23 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { AuthService } from '@auth0/auth0-angular';
 import { UserProfileComponent } from './user-profile.component';
 
 describe('UserProfileComponent', () => {
   let component: UserProfileComponent;
   let fixture: ComponentFixture<UserProfileComponent>;
 
+  const fakeAuth = {
+    user$: {
+      subscribe() {}
+    }
+  }
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserProfileComponent ]
+      declarations: [ UserProfileComponent ],
+      providers: [ 
+        {provide: AuthService, useValue: fakeAuth}
+      ]
     })
     .compileComponents();
   });

@@ -1,13 +1,10 @@
 <div class="base">
   <mat-toolbar color="primary" class="mat-elevation-z6">
-    <span>Loose Leaf Community</span>
+    <span id="NavbarTitle">Loose Leaf Community</span>
     <span class="fill-remaining-space"></span>
     <app-user-profile></app-user-profile>
     <app-auth-button></app-auth-button>
   </mat-toolbar>
-
-  <!-- <app-metadata></app-metadata> -->
-
 
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav mode="side" opened class="sidenav" [class.wide]="wideSidenav()">

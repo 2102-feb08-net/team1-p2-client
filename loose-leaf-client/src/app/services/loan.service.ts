@@ -21,6 +21,7 @@ export class LoanService {
   
   constructor(public auth: AuthService, private http: HttpClient) {}
 
+
   getLoan(id: number): Observable<Loan> {
     return this.http.get<Loan>(this.endpoint + `loans/${id}`);
   }
@@ -34,4 +35,9 @@ export class LoanService {
       console.log(resp);
     });
   }
+
+  getUserLoans(userId: number) :Observable<Loan[]> {
+    return this.http.get<Loan[]>(this.endpoint + `users/${userId}/loans`);
+  }
+
 }
