@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AuthService } from '@auth0/auth0-angular';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
@@ -10,7 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class AppComponent {
   title = 'loose-leaf-client';
 
-  constructor(public auth: AuthService, public cookies: CookieService) {}
+  constructor(public cookies: CookieService) {}
 
   public wideSidenav(): boolean {
     const wide = this.cookies.get("wide-sidenav");

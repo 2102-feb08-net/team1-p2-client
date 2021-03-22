@@ -17,7 +17,7 @@ export class LoanService {
     headers: new HttpHeaders({'Content-Type': 'application/json', 'authorization': `Bearer ${this.accessToken}`})
   };
 
-  constructor(public auth: AuthService, private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getLoan(id: number): Observable<Loan> {
     return this.http.get<Loan>(this.endpoint + `loans/${id}`);
@@ -31,8 +31,8 @@ export class LoanService {
     return this.http.post<LoanRequest>(this.endpoint + `loans`, loan, this.httpOptions);
   }
 
-  getUserLoans() :Observable<Loan[]> {
-    return this.http.get<Loan[]>(this.endpoint + `users/1/loans`);
+  getUserLoans(userId: number) :Observable<Loan[]> {
+    return this.http.get<Loan[]>(this.endpoint + `users/${userId}/loans`);
   }
 
 }
