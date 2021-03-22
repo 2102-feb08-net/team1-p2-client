@@ -18,6 +18,7 @@ mat-card-footer {
     display: flex;
     flex-flow: row nowrap;
     width: 100%;
+    width: 90%;
     justify-content: space-between;
     align-items: baseline;
     padding-left: 15px;
@@ -27,8 +28,10 @@ mat-card-footer {
         justify-content: flex-start;
     }
     &.centered {
-        width: 90%;
         justify-content: center;
+    }
+    &.small {
+        width: wrap;
     }
 }
 
@@ -46,4 +49,5 @@ mat-card-footer {
 
 .thumbnail {
     min-height: 150px;
+    max-height: 200px;
 }

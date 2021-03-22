@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/interfaces/user';
 import { OwnedBook } from 'src/app/interfaces/owned-book-interface';
 import { UserService } from 'src/app/services/user.service';
+import { LoanRequest } from 'src/app/interfaces/loan-interface';
 
 @Component({
   selector: 'app-user-search',
@@ -13,7 +14,10 @@ export class UserSearchComponent implements OnInit {
   searchUserName: string | undefined;
   selectedUser: User | undefined;
   selectedUsersBooks: OwnedBook[] = [];
-  constructor(private us: UserService) { }
+
+  pickedBooks: OwnedBook[] = [];
+  constructor(private us: UserService) {
+  }
 
   ngOnInit(): void {
     this.getUserlist();
@@ -41,5 +45,18 @@ export class UserSearchComponent implements OnInit {
       });
     }
     
+  }
+
+  addBook = (book: OwnedBook): boolean => {
+    this.pickedBooks.push(book);
+    console.log(this.pickedBooks);
+    return true;
+  }
+
+  removeBook = (book: OwnedBook): boolean => {
+    let i = this.pickedBooks.findIndex((ob => ob.id === book.id));
+    this.pickedBooks.splice(i, 1);
+    console.log(this.pickedBooks);
+    return true;
   }
 }

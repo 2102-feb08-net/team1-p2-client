@@ -7,7 +7,10 @@ import { OwnedBook } from 'src/app/interfaces/owned-book-interface';
   styleUrls: ['./book-panel.component.scss']
 })
 export class BookPanelComponent implements OnInit {
-  @Input() book: OwnedBook | undefined;
+  @Input() book: OwnedBook;
+  @Input() addBook: (book: OwnedBook) => boolean;
+  @Input() removeBook: (book: OwnedBook) => boolean;
+  beingBorrowed: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
@@ -30,6 +33,18 @@ export class BookPanelComponent implements OnInit {
     }
     else {
       return "status-unsure";
+    }
+  }
+
+  add() {
+    if (this.addBook != undefined) {
+      this.beingBorrowed = this.addBook(this.book);
+    }
+  }
+
+  remove() {
+    if (this.removeBook != undefined) {
+      this.beingBorrowed = !this.removeBook(this.book);
     }
   }
 }
