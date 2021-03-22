@@ -3,6 +3,8 @@ import { User } from 'src/app/interfaces/user';
 import { OwnedBook } from 'src/app/interfaces/owned-book-interface';
 import { UserService } from 'src/app/services/user.service';
 import { LoanRequest } from 'src/app/interfaces/loan-interface';
+import { MatDialog } from '@angular/material/dialog';
+import { RequestModalComponent } from 'src/app/modals/request-modal/request-modal.component';
 
 @Component({
   selector: 'app-user-search',
@@ -16,7 +18,7 @@ export class UserSearchComponent implements OnInit {
   selectedUsersBooks: OwnedBook[] = [];
 
   pickedBooks: OwnedBook[] = [];
-  constructor(private us: UserService) {
+  constructor(private us: UserService, private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -58,5 +60,12 @@ export class UserSearchComponent implements OnInit {
     this.pickedBooks.splice(i, 1);
     console.log(this.pickedBooks);
     return true;
+  }
+
+  openRequestDialog() {
+    this.dialog.open(RequestModalComponent, {data: this.pickedBooks, height: '600px', width: '700px'})
+    .afterClosed().subscribe(() => {
+      // window.location.reload();
+    });
   }
 }

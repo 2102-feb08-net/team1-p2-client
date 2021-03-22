@@ -29,7 +29,9 @@ export class LoanService {
     return this.http.get<Loan[]>(this.endpoint + `loans`);
   }
 
-  submitLoan(loan: LoanRequest) : Observable<LoanRequest> {
-    return this.http.post<LoanRequest>(this.endpoint + `loans`, loan, this.httpOptions);
+  submitLoan(loan: LoanRequest) {
+    return this.http.post<LoanRequest>(this.endpoint + `loans`, loan, this.httpOptions).subscribe(resp => {
+      console.log(resp);
+    });
   }
 }
