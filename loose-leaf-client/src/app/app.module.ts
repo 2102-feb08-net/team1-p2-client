@@ -32,7 +32,8 @@ import { UserSearchComponent } from './components/user-search/user-search.compon
 import { AuthButtonComponent } from './components/auth-button/auth-button.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserMetadataComponent } from './components/user-metadata/user-metadata.component';
-import { TruncatePipe } from './truncate.pipe';
+import { TruncatePipe } from './pipes/truncate.pipe';
+import { PossessivePipe } from './pipes/possessive.pipe';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { TruncatePipe } from './truncate.pipe';
     AuthButtonComponent,
     UserProfileComponent,
     UserMetadataComponent,
-    TruncatePipe
+    TruncatePipe,
+    PossessivePipe
   ],
   imports: [
     BrowserModule,
