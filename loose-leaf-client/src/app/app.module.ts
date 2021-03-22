@@ -23,6 +23,11 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatListModule } from '@angular/material/list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+
 import { BookPanelComponent } from './components/book-panel/book-panel.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { UserLoansComponent } from './components/user-loans/user-loans.component';
@@ -31,6 +36,10 @@ import { UserSearchComponent } from './components/user-search/user-search.compon
 import { AuthButtonComponent } from './components/auth-button/auth-button.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserMetadataComponent } from './components/user-metadata/user-metadata.component';
+import { TruncatePipe } from './pipes/truncate.pipe';
+import { PossessivePipe } from './pipes/possessive.pipe';
+import { RequestModalComponent } from './modals/request-modal/request-modal.component';
+import { ActivityButtonComponent } from './components/activity-button/activity-button.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +52,11 @@ import { UserMetadataComponent } from './components/user-metadata/user-metadata.
     UserSearchComponent,
     AuthButtonComponent,
     UserProfileComponent,
-    UserMetadataComponent
+    UserMetadataComponent,
+    TruncatePipe,
+    PossessivePipe,
+    RequestModalComponent,
+    ActivityButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +73,10 @@ import { UserMetadataComponent } from './components/user-metadata/user-metadata.
     MatSelectModule,
     MatInputModule,
     MatFormFieldModule,
+    MatDividerModule,
+    MatDialogModule,
+    MatListModule,
+    MatProgressSpinnerModule,
     AuthModule.forRoot({
       domain: 'looseleafcommunity.us.auth0.com',
       clientId: 'igxkfAyb76tmu31PoJNIxqHlFQ6XgmDi',
@@ -103,6 +120,9 @@ import { UserMetadataComponent } from './components/user-metadata/user-metadata.
     BookService,
     UserService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
+  ],
+  entryComponents: [
+    RequestModalComponent
   ],
   bootstrap: [AppComponent]
 })

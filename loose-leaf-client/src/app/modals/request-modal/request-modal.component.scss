@@ -1,0 +1,50 @@
+.half {
+    width: 50%;
+}
+
+.smaller {
+    width: 35%;
+}
+
+.bigger {
+    width: 55%;
+}
+
+.full {
+    width: 100%;
+}
+.list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+    width: 0.4em;
+}
+
+ ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 1px grey;
+    border-radius: 0.2em;
+}
+
+ ::-webkit-scrollbar-thumb {
+    background: #757575;
+    border-radius: 0.2em;
+}
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: darkgray;
+}
+
+.row {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    &.baseline {
+        align-items: baseline;
+    }
+    &.between {
+        justify-content: space-between;
+    }
+}

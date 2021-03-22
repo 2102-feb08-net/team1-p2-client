@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/interfaces/user';
-import { Book } from 'src/app/interfaces/book';
+import { OwnedBook } from 'src/app/interfaces/owned-book-interface';
 import { UserService } from 'src/app/services/user.service';
+import { LoanRequest } from 'src/app/interfaces/loan-interface';
+import { MatDialog } from '@angular/material/dialog';
+import { RequestModalComponent } from 'src/app/modals/request-modal/request-modal.component';
 
 @Component({
   selector: 'app-user-search',
@@ -12,8 +15,11 @@ export class UserSearchComponent implements OnInit {
   userList: User[] = [];
   searchUserName: string | undefined;
   selectedUser: User | undefined;
-  selectedUsersBooks: Book[] = [];
-  constructor(private us: UserService) { }
+  selectedUsersBooks: OwnedBook[] = [];
+
+  pickedBooks: OwnedBook[] = [];
+  constructor(private us: UserService, private dialog: MatDialog) {
+  }
 
   ngOnInit(): void {
     this.getUserlist();
@@ -36,10 +42,30 @@ export class UserSearchComponent implements OnInit {
 
     if (this.selectedUser != undefined) {
       this.us.getUsersBooks(this.selectedUser.id).then(resp => {
-        this.selectedUsersBooks = resp as Book[];
+        this.selectedUsersBooks = resp as OwnedBook[];
         console.log(this.selectedUsersBooks);
       });
     }
     
+  }
+
+  addBook = (book: OwnedBook): boolean => {
+    this.pickedBooks.push(book);
+    console.log(this.pickedBooks);
+    return true;
+  }
+
+  removeBook = (book: OwnedBook): boolean => {
+    let i = this.pickedBooks.findIndex((ob => ob.id === book.id));
+    this.pickedBooks.splice(i, 1);
+    console.log(this.pickedBooks);
+    return true;
+  }
+
+  openRequestDialog() {
+    this.dialog.open(RequestModalComponent, {data: this.pickedBooks, height: '600px', width: '700px'})
+    .afterClosed().subscribe(() => {
+      // window.location.reload();
+    });
   }
 }
