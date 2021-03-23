@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Book } from '../../interfaces/book';
 import { BookService } from '../../services/book.service';
 
@@ -9,11 +9,16 @@ import { BookService } from '../../services/book.service';
   styleUrls: ['./book-search.component.scss'],
 })
 export class BookSearchComponent implements OnInit {
+  searchForm = new FormGroup({
+    searchTitle: new FormControl(''),
+    searchAuthor: new FormControl(''),
+    searchGenre: new FormControl(''),
+  })
   bookList: Book[] = [];
   selectedBook = {} as Book;
-  searchForm = this.fb.group({ title: [''], genre: [''], author: [''] });
 
-  constructor(private readonly bookService: BookService, private fb: FormBuilder) {
+
+  constructor(private readonly bookService: BookService) {
     
   }
 
@@ -33,6 +38,8 @@ export class BookSearchComponent implements OnInit {
     //   this.searchForm.get('genre')?.value, this.searchForm.get('title')?.value).subscribe((response: Book[]) => {
 
     //   };
+
+
   }
 }
 

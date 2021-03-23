@@ -56,7 +56,7 @@ import { ActivityButtonComponent } from './components/activity-button/activity-b
     TruncatePipe,
     PossessivePipe,
     RequestModalComponent,
-    ActivityButtonComponent
+    ActivityButtonComponent,
   ],
   imports: [
     BrowserModule,

@@ -18,14 +18,23 @@ export class BookService {
     }
   }
 
-  getBookByGenre(searchTerm: string) {
-    return this.httpClient.get(environment.serverUrl + `/api/books/genre=${searchTerm})`).toPromise();
-  }
-
   searchBooks(author: string, genre: string, title: string) {
-    if (author || genre || title) {
-      this.appendedUrl += '?';
+    try {
+      if (title || author || genre) {
+        this.appendedUrl += '?';
+      }
+      if (title) {
+        this.appendedUrl += `author=${title}&`;
+      }
+      if (author) {
+        this.appendedUrl += `author=${author}&`;
+      }
+      if (genre) {
+        this.appendedUrl += `title=${genre}&`;
+      }
+      return this.httpClient.get(environment.serverUrl + this.appendedUrl).toPromise();
+    } catch (e) {
+      throw new Error(`error getting selection: ${e}`);
     }
-    return this.httpClient.get(environment.serverUrl + this.appendedUrl);
   }
 }
