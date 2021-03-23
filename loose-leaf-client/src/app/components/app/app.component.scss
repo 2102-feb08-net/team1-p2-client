@@ -10,6 +10,10 @@
     overflow: hidden;
 }
 
+mat-toolbar {
+    align-items: center;
+}
+
 .menu {
     &.title {
         font-style: 500 22px/34px Roboto, "Helvetica Neue", sans-serif;
