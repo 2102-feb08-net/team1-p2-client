@@ -44,6 +44,7 @@ import { WishlistService } from './services/wishlist.service';
 import { LoanService } from './services/loan.service';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { LocalTimePipe } from './pipes/localtime.pipe';
+import { ViewBookComponent } from './components/view-book/view-book.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { LocalTimePipe } from './pipes/localtime.pipe';
     LocalTimePipe,
     RequestModalComponent,
     ActivityButtonComponent,
+    ViewBookComponent,
   ],
   imports: [
     BrowserModule,

@@ -29,18 +29,19 @@
         <button mat-raised-button type="submit" (click)="search()">Search</button>
       </div>
 
-      <div class="app-book-panel" *ngFor="let book of bookList">
+      <!-- <div class="app-book-panel" *ngFor="let book of bookList">
         <div style="display: block">
           <span>{{book.title}}</span>
           <span>{{book.thumbnail}}</span>
           <span>Author: {{book.author}}</span>
           <span>Genre(s): {{book.genres}}</span>
         </div>
-      </div>
+      </div> -->
 
     </div>
 
     <div class="row small space-evenly">
        <!-- <app-book-panel *ngFor="let b of selectedBooks" [book]="b" [addBook]="addBook" [removeBook]="removeBook"></app-book-panel> -->
+       <app-view-book *ngFor="let b of bookList" [book]="b" [addBook]="addBook" [userOwnsBook]="false"></app-view-book>
     </div>
 </div>
