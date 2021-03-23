@@ -13,14 +13,29 @@ import {MDCDataTable} from '@material/data-table';
 export class UserLoansComponent implements OnInit {
 
   public loans : Loan[] = [];
+  public pendingLoans : Loan[] = [];
   constructor(private loanService: LoanService) { }
 
   ngOnInit(): void {
     this.getLoans();
+    this.getLoanRequests();
   }
 
   getLoans(){
-    this.loanService.getLoans()
+    this.loanService.getUserLoans(1)
     .subscribe(loans => this.loans = loans);
   }
+
+  getLoanRequests() {
+    this.loanService.getUserLoanRequests(1).subscribe(requests => this.pendingLoans = requests);
+  }
+
+  updateLoanStatus(loanId : number, status : number)
+  {
+    this.loanService.updateLoanStatus(loanId, status).subscribe(() => {
+      this.getLoans();
+      this.getLoanRequests();
+    })
+  }
+
 }

@@ -6,3 +6,28 @@
 @include icon-button.core-styles;
 @include data-table.core-styles;
 @include data-table.theme-baseline;
+
+.centered {
+    text-align: center;
+}
+
+p.noPadding {
+    margin: 0;
+    padding: 0;
+}
+
+button.approve {
+    padding: 2px;
+    margin: 5px;
+    color: white;
+    background-color: rgb(32, 175, 32);
+    width: 7em;
+}
+
+button.deny {
+    padding: 2px;
+    margin: 5px;
+    color: white;
+    background-color: rgb(240, 75, 75);
+    width: 7em;
+}

@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { Observable } from 'rxjs';
@@ -36,6 +36,14 @@ export class LoanService {
 
   getUserLoans(userId: number) :Observable<Loan[]> {
     return this.http.get<Loan[]>(environment.serverUrl + `/api/users/${userId}/loans`);
+  }
+
+  getUserLoanRequests(userId: number) :Observable<Loan[]> {
+    return this.http.get<Loan[]>(environment.serverUrl + `/api/users/${userId}/requests`);
+  }
+
+  updateLoanStatus(loanId : number, statusId : number) {
+    return this.http.put(environment.serverUrl + `/api/loans/${loanId}?statusId=${statusId}`, this.httpOptions);
   }
 
 }
