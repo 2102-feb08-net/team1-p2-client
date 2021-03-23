@@ -20,8 +20,8 @@
                 <th class="mdc-data-table__cell" scope="row">{{loan.lender.username}}</th>
                 <th class="mdc-data-table__cell" scope="row">{{loan.borrower.username}}</th>
                 <td class="mdc-data-table__cell mdc-data-table__cell--numeric" ><p class="noPadding" *ngFor="let ownedBook of loan.loanedBooks">{{ownedBook.book.title}}</p></td>            
-                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{loan.startDate}}</td>
-                <td class="mdc-data-table__cell">{{loan.endDate}}</td>
+                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{loan.startDate | localtime:'date'}}</td>
+                <td class="mdc-data-table__cell">{{loan.endDate | localtime:'date'}}</td>
                 <td class="mdc-data-table__cell">{{loan.status}}</td>      
             </tr>
             </tbody>
@@ -50,8 +50,8 @@
                 <th class="mdc-data-table__cell" scope="row">{{loan.borrower.username}}</th>
                 <th class="mdc-data-table__cell" scope="row">{{loan.message}}</th>
                 <td class="mdc-data-table__cell mdc-data-table__cell--numeric" ><p class="noPadding" *ngFor="let ownedBook of loan.loanedBooks">{{ownedBook.book.title}}</p></td>            
-                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{loan.startDate}}</td>
-                <td class="mdc-data-table__cell">{{loan.endDate}}</td>
+                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{loan.startDate | localtime:'date'}}</td>
+                <td class="mdc-data-table__cell">{{loan.endDate | localtime:'date'}}</td>
                 <td class="mdc-data-table__cell">
                     <button class="mat-button approve" (click)="updateLoanStatus(loan.id, 2)" >Approve</button>
                     <br/>

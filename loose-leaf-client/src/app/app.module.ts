@@ -43,6 +43,7 @@ import { ActivityButtonComponent } from './components/activity-button/activity-b
 import { WishlistService } from './services/wishlist.service';
 import { LoanService } from './services/loan.service';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { LocalTimePipe } from './pipes/localtime.pipe';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
     UserMetadataComponent,
     TruncatePipe,
     PossessivePipe,
+    LocalTimePipe,
     RequestModalComponent,
     ActivityButtonComponent,
   ],
