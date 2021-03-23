@@ -10,12 +10,12 @@ import { LoanService } from 'src/app/services/loan.service';
   styleUrls: ['./request-modal.component.scss']
 })
 export class RequestModalComponent implements OnInit {
-  streetAddress: string;
-  streetAddress2: string;
-  city: string;
-  state: string;
-  zipCode: string;
-  message: string;
+  streetAddress: string = "";
+  streetAddress2: string = "";
+  city: string = "";
+  state: string = "";
+  zipCode: string = "";
+  message: string = "";
 
   constructor(private dialogRef: MatDialogRef<RequestModalComponent>, @Inject(MAT_DIALOG_DATA) public data: OwnedBook[], private loanService: LoanService) { }
 
