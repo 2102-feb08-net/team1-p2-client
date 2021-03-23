@@ -6,6 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { UserLoansComponent } from './components/user-loans/user-loans.component';
 import { UserSearchComponent } from './components/user-search/user-search.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,11 @@ const routes: Routes = [
   {
     path: "loans",
     component: UserLoansComponent
+  },
+  {
+    path: "wishlist",
+    component: WishlistComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
