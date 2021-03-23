@@ -1,47 +1,59 @@
-<div class="w3-container row centered" style="width: 100%; height: 100%; display: flex;">
-    <div style="w3-container row centered">
-      <h1 class="row centered">
-        Book Search
-      </h1>
+<div class="container-lg my-3" >
+<div class="row mb-5">
+  <div class="col-lg-8 mx-auto">
+    
+    <div class="bg-white p-5 rounded shadow">
 
-      <div class="bookform row centered" style="display: block">
-
-        <mat-form-field appearance="outline">
-          <mat-label>
-            Search by Title:
-          </mat-label>
-            <input matInput type="text" [formControl]="searchTitle">
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>
-            Search by Author:
-          </mat-label>
-            <input matInput type="text" [formControl]="searchAuthor">
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>
-            Search by Genre:
-          </mat-label>
-            <input matInput type="text" [formControl]="searchGenre">
-        </mat-form-field>
-       
-       <div>
-        <button mat-raised-button type="submit" (click)="search()">Search</button>
-      </div>
-
-      <!-- <div class="app-book-panel" *ngFor="let book of bookList">
-        <div style="display: block">
-          <span>{{book.title}}</span>
-          <span>{{book.thumbnail}}</span>
-          <span>Author: {{book.author}}</span>
-          <span>Genre(s): {{book.genres}}</span>
+      <!-- Default search bars with input group -->
+      <h3 style=" color:#2f4357;; size:20px; font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace; ">Book Search</h3>
+        <div class="input-group mb-4">
+          <input type="search" placeholder="Search by Title" aria-describedby="button-addon5" class="form-control" [formControl]="searchTitle">
+          <div class="input-group-append">
+            <button id="button-addon5" type="submit" class="btn btn-primary" (click)="search()"><i class="fa fa-search"></i></button>
+          </div>
         </div>
-      </div> -->
+        <div class="input-group mb-4">
+          <input type="search" placeholder="Search by Author" aria-describedby="button-addon6" class="form-control" [formControl]="searchAuthor">
+          <div class="input-group-append">
+            <button id="button-addon6" type="submit" class="btn btn-primary" (click)="search()"><i class="fa fa-search"></i></button>
+          </div>
+        </div>
+
+
+          <div class="input-group mb-4">
+          <input type="search" placeholder="Search by Genre" aria-describedby="button-addon6" class="form-control" [formControl]="searchGenre">
+          <div class="input-group-append">
+            <button id="button-addon6" type="submit" class="btn btn-primary" (click)="search()"><i class="fa fa-search"></i></button>
+          </div>
+        </div>
+      
+    
+      <!-- End -->
 
     </div>
+    
+<div class="container-lg my-3" >
+  <div class="row">
+    <div class="col-sm-6"  *ngFor="let b of bookList">
+      <div class="card" >
+        <app-view-book  [book]="b" [addBook]="addBook" [userOwnsBook]="false"></app-view-book>
 
+      </div>
+    </div>
+
+
+ 
+
+  
+</div>
+  </div>
+</div>
+
+
+  
     <div class="row small space-evenly">
        <!-- <app-book-panel *ngFor="let b of selectedBooks" [book]="b" [addBook]="addBook" [removeBook]="removeBook"></app-book-panel> -->
-       <app-view-book *ngFor="let b of bookList" [book]="b" [addBook]="addBook" [userOwnsBook]="false"></app-view-book>
-    </div>
+      
+    
 </div>
+
