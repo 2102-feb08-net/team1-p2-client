@@ -6,7 +6,10 @@ import { domain, clientId, audience, serverUrl } from '../../auth_config.json';
 
 export const environment = {
   production: false,
-  serverURL: "http://looseleafcommunity.azurewebsites.net"
+  domain,
+  clientId,
+  audience,
+  serverUrl,
 };
 /*
  * For easier debugging in development mode, you can import the following file

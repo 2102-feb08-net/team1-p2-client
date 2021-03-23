@@ -79,11 +79,11 @@ import { ActivityButtonComponent } from './components/activity-button/activity-b
     MatProgressSpinnerModule,
     ReactiveFormsModule,
     AuthModule.forRoot({
-      domain: 'looseleafcommunity.us.auth0.com',
-      clientId: 'igxkfAyb76tmu31PoJNIxqHlFQ6XgmDi',
+      domain: env.domain,
+      clientId: env.clientId,
     
       // Request this audience at user authentication time
-      audience: 'https://looseleafcommunity.us.auth0.com/api/v2/',
+      audience: env.audience,
     
       // Request this scope at user authentication time
       scope: 'read:current_user',
@@ -103,14 +103,9 @@ import { ActivityButtonComponent } from './components/activity-button/activity-b
             }
           },
           {
-
-            uri: 'https://looseleafcommunity.azurewebsites.net/api/*',
+            uri: `${env.serverUrl}/api/*`,
             tokenOptions: {
-              // The attached token should target this audience
-              audience: 'https://looseleafcommunity.azurewebsites.net',
-    
-              // The attached token should have these scopes
-              scope: 'read:loans'
+              audience: env.serverUrl,
             }
           }
         ]

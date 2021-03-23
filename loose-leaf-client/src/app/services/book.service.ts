@@ -12,7 +12,7 @@ export class BookService {
 
   getAllBooks() {
     try {
-      return this.httpClient.get(environment.serverURL + "/api/books").toPromise();
+      return this.httpClient.get(environment.serverUrl + "/api/books").toPromise();
     } catch (e) {
       throw new Error(`error getting all books: ${e}`);
     }
@@ -32,7 +32,7 @@ export class BookService {
       if (genre) {
         this.appendedUrl += `title=${genre}&`;
       }
-      return this.httpClient.get(environment.serverURL + this.appendedUrl).toPromise();
+      return this.httpClient.get(environment.serverUrl + this.appendedUrl).toPromise();
     } catch (e) {
       throw new Error(`error getting selection: ${e}`);
     }

@@ -10,7 +10,7 @@ export class UserService {
 
   getAllUsers() {
     try {
-      return this.http.get(environment.serverURL + "/api/users").toPromise();
+      return this.http.get(environment.serverUrl + "/api/users").toPromise();
     } catch (e) {
       throw new Error(`error getting all users: ${e}`);
     }
@@ -18,7 +18,7 @@ export class UserService {
 
   getUsersBooks(id: number) {
     try {
-      return this.http.get(environment.serverURL + `/api/users/${id}/books`).toPromise();
+      return this.http.get(environment.serverUrl + `/api/users/${id}/books`).toPromise();
     } catch (e) {
       throw new Error(`error getting all books for user with id ${id}: ${e}`);
     }

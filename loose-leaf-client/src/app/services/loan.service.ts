@@ -6,38 +6,36 @@ import { Loan, LoanRequest } from '../interfaces/loan-interface';
 import { OwnedBook } from '../interfaces/owned-book-interface';
 import { User } from '../interfaces/user';
 
+import { environment } from 'src/environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class LoanService {
 
-  private endpoint = 'https://looseleafcommunity.azurewebsites.net/api/'
-
-  private accessToken = '';
-
   httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json', 'authorization': `Bearer ${this.accessToken}`})
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
   
   constructor(public auth: AuthService, private http: HttpClient) {}
 
 
   getLoan(id: number): Observable<Loan> {
-    return this.http.get<Loan>(this.endpoint + `loans/${id}`);
+    return this.http.get<Loan>(environment.serverUrl+ `/api/loans/${id}`);
   }
 
   getLoans(): Observable<Loan[]> {
-    return this.http.get<Loan[]>(this.endpoint + `loans`);
+    return this.http.get<Loan[]>(environment.serverUrl + `/api/loans`);
   }
 
   submitLoan(loan: LoanRequest) {
-    return this.http.post<LoanRequest>(this.endpoint + `loans`, loan, this.httpOptions).subscribe(resp => {
+    return this.http.post<LoanRequest>(environment.serverUrl + `/api/loans`, loan, this.httpOptions).subscribe(resp => {
       console.log(resp);
     });
   }
 
   getUserLoans(userId: number) :Observable<Loan[]> {
-    return this.http.get<Loan[]>(this.endpoint + `users/${userId}/loans`);
+    return this.http.get<Loan[]>(environment.serverUrl + `/api/users/${userId}/loans`);
   }
 
 }
