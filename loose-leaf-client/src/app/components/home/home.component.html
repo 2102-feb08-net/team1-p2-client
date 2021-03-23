@@ -1,1 +1,126 @@
-<p>home works!</p>
+
+
+<div class="container-lg my-3" >
+ 
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <div >
+        <h2 class="text-center" style="color: white; font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;">Book Recommendations</h2>
+      </div>
+        <!-- Carousel indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active" *ngFor="let book of recommendedBooks; let i = index"></li>
+           
+        </ol>
+        <!-- Wrapper for carousel items -->
+        <div class="my-5 text-center container">
+          <div class="row mb-2">
+            <div class="col text-center">
+            </div>
+          </div>
+          <div class="carousel-inner">
+            <ng-container *ngFor="let book of recommendedBooks; let i = index">
+              <div class="carousel-item active" *ngIf="i == 0">
+                <h3 class="text-white">{{book.title}}</h3>
+                <img [src]="book.thumbnail" alt="First Slide">
+              </div>
+              <div class="carousel-item" *ngIf="i > 0">
+                <h3 class="text-white">{{book.title}}</h3>
+                <img [src]="book.thumbnail" alt="Second Slide">
+              </div>
+            </ng-container>
+          </div>
+          <!-- Carousel controls -->
+          <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
+        </div>
+</div>
+
+<div class="jumbotron ">
+  <h1 class="display-4">Find Your Next Read!</h1>
+  <p class="lead">Search through our various lenders and find your next great read! Loose Leaf Library have a variety of users with a variety of books to  select from!</p>
+  <hr class="my-4">
+  <p>Based on your previous loans, Looose Leaf Library will recommend the perfect book for you!</p>
+  <p class="lead">
+    <a class="btn btn-primary  btn-lg" routerLink="/books" role="button" style="background-color: #2f4357;">Search Book</a>
+  </p>
+</div>
+
+<div class="p-5 text-center " style="background-color: #2f4357;">
+  
+  <h4 class="mb-3" style="color:white;">User History</h4>
+</div>
+      <div class="container">
+  <div class="row" style="margin-top: 20px;">
+    
+      <div class="col-md-6 " style="min-height: 500px;"> <!--insert primary here-->
+      <h3 class="d-flex justify-content-center border-bottom"  style="font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace; " >Latest Loans</h3>
+
+      
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Book</th>
+            <th scope="col">Status</th>
+            <th scope="col"><button type="button" class="btn btn-primary" style="background-color: #2f4357;"><a routerLink="/loans" style="color: white;">View All</a></button></th>
+           
+          </tr>
+        </thead>
+        <tbody  *ngFor="let loan of firstfiveloans">
+          <tr >
+            <th >{{loan.id }}</th>
+            <td ><p class="noPadding" *ngFor="let ownedBook of loan.loanedBooks">{{ownedBook.book.title}}</p></td> 
+            <td >{{loan.status}}</td>
+           
+        
+          </tr>
+        </tbody>
+      </table>
+
+
+              
+      </div>
+      
+        
+      <div class="col-md-6">
+        <div class="row h-100 flex-column">
+          <div class="col-md-12 mw-100 "><!--insert danger here-->
+
+              <h3 class="d-flex justify-content-center border-bottom" style="font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace; " >Latest WishList</h3>
+      
+            
+
+
+
+                
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Genres</th>
+                    <th scope="col"><button type="button" class="btn btn-primary" style="background-color: #2f4357;"><a routerLink="/wishlist" style="color: white;">View All</a></button></th>
+                   
+                  </tr>
+                </thead>
+                <tbody  *ngFor="let book of firstfivewishlist">
+                  <tr >
+                    <th >{{book.title | truncate:[30, '...']}}</th>
+                    <td >{{book.author}}</td> 
+                    <td *ngFor="let genre of book.genres"><p>{{genre}}</p></td>            
+               <!--     <td class="mdc-data-table__cell">{{book.isbn}}</td>-->
+                
+                  </tr>
+                </tbody>
+              </table>
+        
+</div>
+
+              </div>
+    </div>
+
+  
