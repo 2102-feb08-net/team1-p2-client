@@ -18,19 +18,17 @@ export class BookService {
     }
   }
 
+  addParamToUrl(url: string, field: string): string {
+    return url.concat(field ? `field=${field}&` : '');
+  }
+
   searchBooks(title: string, author: string, genre: string) {
-    if (title || author || genre) {
-      this.appendedUrl += '?';
-    }
-    if (title) {
-      this.appendedUrl += `title=${title}&`;
-    }
-    if (author) {
-      this.appendedUrl += `author=${author}&`;
-    }
-    if (genre) {
-      this.appendedUrl += `genre=${genre}&`;
-    }
+    (title || author || genre) ? this.addParamToUrl(this.appendedUrl, '?') : '';
+
+    this.addParamToUrl(this.appendedUrl, title);
+    this.addParamToUrl(this.appendedUrl, author);
+    this.addParamToUrl(this.appendedUrl, genre);
+
     return this.httpClient.get(environment.serverUrl + this.appendedUrl);
   }
 }
