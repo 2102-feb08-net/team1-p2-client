@@ -23,7 +23,7 @@ export class UserMetadataComponent implements OnInit {
           encodeURI(`https://looseleafcommunity.us.auth0.com/api/v2/users/${user?.sub}`)
         )
       ),
-      pluck('user_id'),
+      pluck('user_metadata'),
       tap((meta) => {
         this.metadata = meta;
       })

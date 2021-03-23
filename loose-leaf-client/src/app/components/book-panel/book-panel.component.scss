@@ -1,4 +1,53 @@
 .card {
-    width: 300px;
-    height: 300px;
+    width: 275px;
+    height: 380px;
+    margin: 10px 10px;
+}
+
+mat-card-content {
+    min-height: 260px;
+    height: 260px;
+    // flex: 1 1 auto;
+}
+
+mat-card-footer {
+    max-height: 30px;
+}
+
+.row {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    width: 90%;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    &.close {
+        justify-content: flex-start;
+    }
+    &.centered {
+        justify-content: center;
+    }
+    &.small {
+        width: wrap;
+    }
+}
+
+.status-good {
+    color: #06a736;
+}
+
+.status-bad {
+    color: #f10303;
+}
+
+.status-unsure {
+    color: #e7bd00;
+}
+
+.thumbnail {
+    min-height: 150px;
+    max-height: 200px;
 }

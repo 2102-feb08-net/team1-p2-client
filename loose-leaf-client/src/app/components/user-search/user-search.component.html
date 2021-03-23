@@ -7,15 +7,20 @@
         </mat-option>
     </mat-autocomplete>
   </mat-form-field>
-  <button color="primary" mat-raised-button (click)="search()"><mat-icon>search</mat-icon></button>
+  <button color="primary" mat-stroked-button (click)="search()"><mat-icon>search</mat-icon></button>
 </div>
 
-<div class="row" *ngIf="selectedUser">
-  <h1>{{selectedUser.userName}}</h1>
+<div class="row centered" *ngIf="selectedUser">
+  <h1>{{selectedUser.userName | possessive}} books</h1>
+  <div class="section">
+    <mat-icon>shopping_cart</mat-icon>
+    <p class="counter">{{pickedBooks.length}}</p>
+    <button mat-raised-button color="primary" [disabled]="pickedBooks.length == 0" (click)="openRequestDialog()">Request</button>
+  </div>
 </div>
-
-<div class="row space-evenly">
-  <app-book-panel *ngFor="let b of selectedUsersBooks" [book]="b"></app-book-panel>
+<mat-divider></mat-divider>
+<div class="row small space-evenly">
+  <app-book-panel *ngFor="let b of selectedUsersBooks" [book]="b" [addBook]="addBook" [removeBook]="removeBook"></app-book-panel>
 </div>
 
 

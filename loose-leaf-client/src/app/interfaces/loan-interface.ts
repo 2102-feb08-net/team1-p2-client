@@ -19,7 +19,7 @@ export interface LoanRequest {
     message: string;
     startDate: string;
     endDate: string;
-    address: string;
-    ownedBooks : number[]
+    addressId: number;
+    ownedBookIds : number[]
     status: string;
 }

@@ -3,9 +3,28 @@
       <h1>
         Book Search
       </h1>
-      <div style="display: flex">
-        <input placeholder="Book ID" type="text" [(ngModel)]="searchTerm">
-        <button (click)="searchByTerm(searchTerm)" style="margin-left: 10px">Search</button>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Input</mat-label>
+          <input matInput>
+        </mat-form-field>
+
+
+        <form [formGroup]="searchForm" (ngSubmit)="search()">
+          <label>
+            Title:
+            <input type="text" formControlName="title">
+          </label>
+          <label>
+            Author:
+            <input type="text" formControlName="author">
+          </label>
+          <label>
+            Genre:
+            <input type="text" formControlName="genre">
+          </label>
+          <button type="submit">Search</button>
+        </form>
       </div>
       <div *ngIf="selectedBook" style="display: flex">
         <div style="display: block">
@@ -16,14 +35,7 @@
         </div>
         <div style="display: block; margin-left: 20px">
           <h2>ISBN</h2>
-          <!-- <span>
-            {{selectedBook?.volumeInfo?.industryIdentifiers[0].type?.replace('_', ' ')}} — {{selectedBook?.volumeInfo?.industryIdentifiers[0].identifier}}
-          </span>
-          <span style="display: block" *ngIf="selectedBook?.volumeInfo?.industryIdentifiers[1]?.type">
-            {{selectedBook?.volumeInfo?.industryIdentifiers[1].type?.replace('_', ' ')}} — {{selectedBook?.volumeInfo?.industryIdentifiers[1].identifier}}
-          </span> -->
         </div>
       </div>
     </div>
-    <app-book-panel  *ngIf="selectedBook" [book]="selectedBook" style="height: 100%; width: 50%;"></app-book-panel>
   </div>
