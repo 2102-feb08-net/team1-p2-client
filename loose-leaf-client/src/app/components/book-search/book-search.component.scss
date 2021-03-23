@@ -1,5 +1,19 @@
-.page {
-    margin-left: 20px;
+.w3-container {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    align-items: baseline;
+    &.centered {
+        justify-content: center;
+    }
+    &.space-evenly {
+        justify-content: space-evenly;
+    }
+    &.between {
+        justify-content: space-between;
+    }
 }
 
 #submit {

@@ -16,6 +16,7 @@ export class BookSearchComponent implements OnInit {
   searchGenre= new FormControl('');
   bookList: Book[] = [];
   selectedBooks: Book[] = [];
+  genreList: string[];
 
   constructor(private readonly bookService: BookService, private dialog: MatDialog) {
   }
@@ -41,12 +42,6 @@ export class BookSearchComponent implements OnInit {
     this.selectedBooks.splice(i, 1);
     console.log(this.selectedBooks);
     return true;
-  }
-
-  openRequestDialog() {
-    this.dialog.open(RequestModalComponent, {data: this.selectedBooks, height: '600px', width: '700px'})
-    .afterClosed().subscribe(() => {
-    });
   }
 }
 

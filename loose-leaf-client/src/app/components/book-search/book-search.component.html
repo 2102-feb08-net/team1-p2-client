@@ -1,10 +1,10 @@
-<div class="page" style="width: 100%; height: 100%; display: flex;">
-    <div style="width: 50%; display: block">
-      <h1>
-        Find a Book:
+<div class="w3-container row centered" style="width: 100%; height: 100%; display: flex;">
+    <div style="w3-container row centered">
+      <h1 class="row centered">
+        Book Search
       </h1>
 
-      <div class="bookform" style="display: block">
+      <div class="bookform row centered" style="display: block">
 
         <mat-form-field appearance="outline">
           <mat-label>
@@ -18,14 +18,15 @@
           </mat-label>
             <input matInput type="text" [formControl]="searchAuthor">
         </mat-form-field>
-        <mat-form-field appearance="outline" >
+        <mat-form-field appearance="outline">
           <mat-label>
             Search by Genre:
           </mat-label>
             <input matInput type="text" [formControl]="searchGenre">
         </mat-form-field>
        
-        <button type="submit" (click)="search()">Search</button>
+       <div>
+        <button mat-raised-button type="submit" (click)="search()">Search</button>
       </div>
 
       <div class="app-book-panel" *ngFor="let book of bookList">
