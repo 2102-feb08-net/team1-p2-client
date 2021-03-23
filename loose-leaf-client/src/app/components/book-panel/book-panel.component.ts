@@ -20,10 +20,10 @@ export class BookPanelComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._getWishList();
+    this._getWishlist();
   }
 
-  private _getWishList() {
+  private _getWishlist() {
     // TODO: add a real user ID
     this.wishlistService.getWishlist(1).subscribe(resp => {
       this.userwishlist = resp;
@@ -65,13 +65,13 @@ export class BookPanelComponent implements OnInit {
   addToWishlist() {
     // TODO: add a real user ID
     this.onWishlist = true;
-    this.wishlistService.addBookToWishlist(1, this.book.id).toPromise().then(() => this._getWishList());
+    this.wishlistService.addBookToWishlist(1, this.book.id).toPromise().then(() => this._getWishlist());
   }
 
   removeFromWishlist() {
     // TODO: add a real user ID
     this.onWishlist = false;
-    this.wishlistService.removeBookFromWishlist(1, this.book.id).toPromise().then(() => this._getWishList());
+    this.wishlistService.removeBookFromWishlist(1, this.book.id).toPromise().then(() => this._getWishlist());
   }
 
   isOnWishlist() {
