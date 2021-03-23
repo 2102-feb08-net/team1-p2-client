@@ -18,23 +18,17 @@ export class BookService {
     }
   }
 
-  searchBooks(author: string, genre: string, title: string) {
-    try {
-      if (title || author || genre) {
-        this.appendedUrl += '?';
-      }
-      if (title) {
-        this.appendedUrl += `author=${title}&`;
-      }
-      if (author) {
-        this.appendedUrl += `author=${author}&`;
-      }
-      if (genre) {
-        this.appendedUrl += `title=${genre}&`;
-      }
-      return this.httpClient.get(environment.serverUrl + this.appendedUrl).toPromise();
-    } catch (e) {
-      throw new Error(`error getting selection: ${e}`);
-    }
+  addParamToUrl(url: string, field: string): string {
+    return url.concat(field ? `field=${field}&` : '');
+  }
+
+  searchBooks(title: string, author: string, genre: string) {
+    (title || author || genre) ? this.addParamToUrl(this.appendedUrl, '?') : '';
+
+    this.addParamToUrl(this.appendedUrl, title);
+    this.addParamToUrl(this.appendedUrl, author);
+    this.addParamToUrl(this.appendedUrl, genre);
+
+    return this.httpClient.get(environment.serverUrl + this.appendedUrl);
   }
 }
