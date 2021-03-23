@@ -1,41 +1,34 @@
-<div style="width: 100%; height: 100%; display: flex;">
+<div class="page" style="width: 100%; height: 100%; display: flex;">
     <div style="width: 50%; display: block">
       <h1>
-        Book Search
+        Find a Book:
       </h1>
-      <div>
-        <mat-form-field appearance="fill">
-          <mat-label>Input</mat-label>
-          <input matInput>
-        </mat-form-field>
 
-
-        <form [formGroup]="searchForm" (ngSubmit)="search()">
-          <label>
+      <div class="bookform">
+        <mat-form-field [formGroup]="searchForm" (ngSubmit)="search()">
+          <label aria-label="Search by title" placeholder="Search by title">
             Title:
-            <input type="text" formControlName="title">
+            <input type="text" formControlName="searchTitle">
           </label>
-          <label>
+          <label aria-label="Search by author" placeholder="Search by author">
             Author:
-            <input type="text" formControlName="author">
+            <input type="text" formControlName="searchAuthor">
           </label>
-          <label>
+          <label aria-label="Search by genre" placeholder="Search by genre">
             Genre:
-            <input type="text" formControlName="genre">
+            <input type="text" formControlName="searchGenre">
           </label>
-          <button type="submit">Search</button>
-        </form>
+          <button id="searchbtn" type="submit">Search</button>
+        </mat-form-field>
       </div>
+<!-- 
       <div *ngIf="selectedBook" style="display: flex">
         <div style="display: block">
           <h2>Title</h2>
           <span>
-            <!-- {{selectedBook?.volumeInfo?.title}} -->
+            {{selectedBook?.volumeInfo?.title}} 
           </span>
         </div>
-        <div style="display: block; margin-left: 20px">
-          <h2>ISBN</h2>
-        </div>
-      </div>
+      </div> -->
     </div>
   </div>
