@@ -4,7 +4,7 @@
         Find a Book:
       </h1>
 
-      <div class="bookform">
+      <div class="bookform" style="display: block">
 
         <mat-form-field appearance="outline">
           <mat-label>
@@ -37,5 +37,9 @@
         </div>
       </div>
 
+    </div>
+
+    <div class="row small space-evenly">
+       <!-- <app-book-panel *ngFor="let b of selectedBooks" [book]="b" [addBook]="addBook" [removeBook]="removeBook"></app-book-panel> -->
     </div>
 </div>
