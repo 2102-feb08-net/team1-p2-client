@@ -1,23 +1,23 @@
-.card {
-    width: 275px;
-    height: 380px;
+.book-card {
+    width: 300px;
+    height: 400px;
     margin: 10px 10px;
 }
 
 mat-card-content {
-    min-height: 67%;
-    height: 67%;
+    min-height: 230px;
+    height: 230px;
 }
 
 mat-card-footer {
     max-height: 30px;
 }
 
-.row {
+.card-row {
     display: flex;
     flex-flow: row nowrap;
     width: 100%;
-    width: 90%;
+    // width: 90%;
     justify-content: space-between;
     align-items: baseline;
     padding-left: 15px;
@@ -47,6 +47,6 @@ mat-card-footer {
 }
 
 .thumbnail {
-    min-height: 150px;
-    max-height: 200px;
+    min-height: 120px;
+    height: 150px;
 }
