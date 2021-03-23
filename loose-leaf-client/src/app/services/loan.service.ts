@@ -17,7 +17,7 @@ export class LoanService {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
   
-  constructor(public auth: AuthService, private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
 
   getLoan(id: number): Observable<Loan> {
