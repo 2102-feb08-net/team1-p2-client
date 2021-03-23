@@ -105,7 +105,7 @@ import { ActivityButtonComponent } from './components/activity-button/activity-b
           {
             uri: `${env.serverUrl}/api/*`,
             tokenOptions: {
-              audience: env.serverUrl,
+              audience: env.audience,
             }
           }
         ]
