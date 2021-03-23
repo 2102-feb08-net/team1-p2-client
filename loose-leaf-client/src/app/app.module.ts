@@ -40,6 +40,9 @@ import { TruncatePipe } from './pipes/truncate.pipe';
 import { PossessivePipe } from './pipes/possessive.pipe';
 import { RequestModalComponent } from './modals/request-modal/request-modal.component';
 import { ActivityButtonComponent } from './components/activity-button/activity-button.component';
+import { WishlistService } from './services/wishlist.service';
+import { LoanService } from './services/loan.service';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +53,7 @@ import { ActivityButtonComponent } from './components/activity-button/activity-b
     UserDetailsComponent,
     UserLoansComponent,
     UserSearchComponent,
+    WishlistComponent,
     AuthButtonComponent,
     UserProfileComponent,
     UserMetadataComponent,
@@ -115,6 +119,8 @@ import { ActivityButtonComponent } from './components/activity-button/activity-b
   providers: [
     BookService,
     UserService,
+    WishlistService,
+    LoanService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
   ],
   entryComponents: [
