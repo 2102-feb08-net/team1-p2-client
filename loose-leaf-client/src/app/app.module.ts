@@ -8,7 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BookService } from './services/book.service';
 import { BookSearchComponent } from './components/book-search/book-search.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthModule } from '@auth0/auth0-angular';
 import { AuthHttpInterceptor } from '@auth0/auth0-angular';
@@ -77,6 +77,7 @@ import { ActivityButtonComponent } from './components/activity-button/activity-b
     MatDialogModule,
     MatListModule,
     MatProgressSpinnerModule,
+    ReactiveFormsModule,
     AuthModule.forRoot({
       domain: 'looseleafcommunity.us.auth0.com',
       clientId: 'igxkfAyb76tmu31PoJNIxqHlFQ6XgmDi',

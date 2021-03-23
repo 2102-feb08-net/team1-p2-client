@@ -1,19 +1,31 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class BookService {
-  getBookUrl: string;
-  constructor(private readonly httpClient: HttpClient) {
-    this.getBookUrl =
-      'https://www.googleapis.com/books/v1/volumes/{{volumeId}}';
+  appendedUrl: string = "";
+  constructor(private httpClient: HttpClient) {}
+
+  getAllBooks() {
+    try {
+      return this.httpClient.get(environment.serverURL + "/api/books").toPromise();
+    } catch (e) {
+      throw new Error(`error getting all books: ${e}`);
+    }
   }
 
-  // hard coding book to see if it works  
-  getBookFromApi(bookId = '_LettPDhwR0C') {
-    return this.httpClient.get(this.getBookUrl.replace('{{volumeId}}', bookId));
+  getBookByGenre(searchTerm: string) {
+    return this.httpClient.get(environment.serverURL + `/api/books/genre=${searchTerm})`).toPromise();
+  }
+
+  searchBooks(author: string, genre: string, title: string) {
+    if (author || genre || title) {
+      this.appendedUrl += '?';
+    }
+    return this.httpClient.get(environment.serverURL + this.appendedUrl);
   }
 }
