@@ -1,12 +1,14 @@
 <mat-card class="card">
   <mat-card-header>
     <mat-card-title aria-label="book?.book?.title">
-      {{ book?.book?.title! | truncate:[22, '...'] }}
+      {{ book?.book?.title! | truncate:[18, '...'] }}
     </mat-card-title>
     <mat-card-subtitle>
       {{ book?.book?.author! | truncate:[30, '...'] }}
     </mat-card-subtitle>
-    
+    <span class="fill-remaining-space"></span>
+    <button mat-icon-button (click)="addToWishlist()" *ngIf="!onWishlist"><mat-icon>favorite_border</mat-icon></button>
+    <button mat-icon-button (click)="removeFromWishlist()" *ngIf="onWishlist" color="warn"><mat-icon>favorite</mat-icon></button>
   </mat-card-header>
   <mat-divider></mat-divider>
   <mat-card-content>
@@ -20,7 +22,7 @@
   <mat-divider></mat-divider>
     <mat-card-actions class="row">
       <h3 class="mat-h3" [ngClass]="getAvailabilityClass()">{{book?.availability}}</h3>
-      <button *ngIf="!beingBorrowed" mat-flat-button color="primary" [disabled]="!canBorrow()" (click)="add()">Add</button>
+      <button *ngIf="!beingBorrowed" mat-flat-button color="primary" [disabled]="!canBorrow()" (click)="add()">Add to Request</button>
       <button *ngIf="beingBorrowed" mat-flat-button color="warn" (click)="remove()">Remove</button>
     </mat-card-actions>
 </mat-card>
