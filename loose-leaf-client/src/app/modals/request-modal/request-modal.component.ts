@@ -27,6 +27,7 @@ export class RequestModalComponent implements OnInit {
     try {
       let now = new Date();
       let then = new Date(Date.now() + 12096e5);
+
       let request: LoanRequest = {
         lenderId: this.data[0].ownerId,
         borrowerId: 4, //TODO: make this something not static
