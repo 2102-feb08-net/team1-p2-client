@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 
 export class BookService {
   appendedUrl: string = "";
+  booksUrl = environment.serverUrl.concat('/api/books');
   constructor(private httpClient: HttpClient) {}
 
   getAllBooks() {
@@ -18,17 +19,20 @@ export class BookService {
     }
   }
 
-  addParamToUrl(url: string, field: string): string {
-    return url.concat(field ? `field=${field}&` : '');
+  addParamToUrl(category: string, field: string): string {
+    return field ? `${category}=${field}&` : '';
   }
 
   searchBooks(title: string, author: string, genre: string) {
-    (title || author || genre) ? this.addParamToUrl(this.appendedUrl, '?') : '';
-
-    this.addParamToUrl(this.appendedUrl, title);
-    this.addParamToUrl(this.appendedUrl, author);
-    this.addParamToUrl(this.appendedUrl, genre);
-
-    return this.httpClient.get(environment.serverUrl + this.appendedUrl);
+    debugger;
+    if (title || author || genre) {
+      this.appendedUrl += '?';
+    }
+    debugger;   
+    this.appendedUrl = this.appendedUrl.concat(this.addParamToUrl('title', title))
+      .concat(this.addParamToUrl('author', author))
+      .concat(this.addParamToUrl('genre', genre));
+    debugger;
+    return this.httpClient.get(this.booksUrl.concat(this.appendedUrl));
   }
 }

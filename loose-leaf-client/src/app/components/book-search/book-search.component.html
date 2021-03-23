@@ -5,30 +5,37 @@
       </h1>
 
       <div class="bookform">
-        <mat-form-field [formGroup]="searchForm" (ngSubmit)="search()">
-          <label aria-label="Search by title" placeholder="Search by title">
-            Title:
-            <input type="text" formControlName="searchTitle">
-          </label>
-          <label aria-label="Search by author" placeholder="Search by author">
-            Author:
-            <input type="text" formControlName="searchAuthor">
-          </label>
-          <label aria-label="Search by genre" placeholder="Search by genre">
-            Genre:
-            <input type="text" formControlName="searchGenre">
-          </label>
-          <button id="searchbtn" type="submit">Search</button>
+
+        <mat-form-field appearance="outline">
+          <mat-label>
+            Search by Title:
+          </mat-label>
+            <input matInput type="text" [formControl]="searchTitle">
         </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>
+            Search by Author:
+          </mat-label>
+            <input matInput type="text" [formControl]="searchAuthor">
+        </mat-form-field>
+        <mat-form-field appearance="outline" >
+          <mat-label>
+            Search by Genre:
+          </mat-label>
+            <input matInput type="text" [formControl]="searchGenre">
+        </mat-form-field>
+       
+        <button type="submit" (click)="search()">Search</button>
       </div>
-<!-- 
-      <div *ngIf="selectedBook" style="display: flex">
+
+      <div class="app-book-panel" *ngFor="let book of bookList">
         <div style="display: block">
-          <h2>Title</h2>
-          <span>
-            {{selectedBook?.volumeInfo?.title}} 
-          </span>
+          <span>{{book.title}}</span>
+          <span>{{book.thumbnail}}</span>
+          <span>Author: {{book.author}}</span>
+          <span>Genre(s): {{book.genres}}</span>
         </div>
-      </div> -->
+      </div>
+
     </div>
-  </div>
+</div>

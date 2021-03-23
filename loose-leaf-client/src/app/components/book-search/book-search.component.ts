@@ -9,37 +9,30 @@ import { BookService } from '../../services/book.service';
   styleUrls: ['./book-search.component.scss'],
 })
 export class BookSearchComponent implements OnInit {
-  searchForm = new FormGroup({
-    searchTitle: new FormControl(''),
-    searchAuthor: new FormControl(''),
-    searchGenre: new FormControl(''),
-  })
+  searchTitle= new FormControl('');
+  searchAuthor= new FormControl('');
+  searchGenre= new FormControl('');
   bookList: Book[] = [];
-  selectedBook = {} as Book;
-
 
   constructor(private readonly bookService: BookService) {
-    
   }
 
   ngOnInit(): void {
-    this.getBookList();
-  }
-
-  getBookList() {
-    this.bookService.getAllBooks().then(resp => 
-      {
-        this.bookList = resp as Book[];
-      });
   }
 
   search() {
-    // this.bookService.searchBooks(this.searchForm.get('author')?.value as string, 
-    //   this.searchForm.get('genre')?.value, this.searchForm.get('title')?.value).subscribe((response: Book[]) => {
-
-    //   };
-
-
+    debugger;
+    this.bookService.searchBooks(this.searchTitle.value, this.searchAuthor.value,
+      this.searchGenre.value).subscribe((response) => {
+        debugger;
+        this.bookList = this.bookList.concat(response as Book);
+      
+    })
   }
+
+  // search() {
+  //   this.bookService.searchBooks(this.searchForm.get('searchTitle')?.value as string, this.searchForm.get('searchAuthor')?.value as string,
+  //     this.searchForm.get('searchGenre')?.value as string).subscribe;
+  // }
 }
 
