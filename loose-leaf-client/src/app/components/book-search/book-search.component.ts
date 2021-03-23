@@ -8,9 +8,12 @@ import { BookService } from '../../services/book.service';
   styleUrls: ['./book-search.component.scss'],
 })
 export class BookSearchComponent implements OnInit {
-  searchTerm: string = "";    //add searchTerm to panel
+  searchTerm: string = "";   
   books: Book[] = [];
   selectedBook?: Book;
+  searchAuthor: string;
+  searchTitle: string;
+  searchGenre: string;
   constructor(private readonly bookService: BookService) {}
 
   ngOnInit(): void {}
