@@ -62,7 +62,7 @@
 
       
       <table class="table">
-        <thead>
+        <thead class="shadow-lg">
           <tr>
             <th scope="col">ID</th>
             <th scope="col">Book</th>
@@ -70,7 +70,7 @@
            
           </tr>
         </thead>
-        <tbody  *ngFor="let loan of firstfiveloans">
+        <tbody class="shadow-lg" *ngFor="let loan of firstfiveloans">
           <tr >
             <th >{{loan.id }}</th>
             <td ><p class="noPadding" *ngFor="let ownedBook of loan.loanedBooks">{{ownedBook.book.title}}</p></td> 
@@ -96,8 +96,8 @@
 
 
                 
-              <table class="table">
-                <thead>
+              <table class="table ">
+                <thead class="shadow-lg">
                   <tr>
                     <th scope="col">Title</th>
                     <th scope="col">Author</th>
@@ -106,7 +106,7 @@
                    
                   </tr>
                 </thead>
-                <tbody  *ngFor="let book of firstfivewishlist">
+                <tbody class="shadow-lg"  *ngFor="let book of firstfivewishlist">
                   <tr >
                     <th >{{book.title | truncate:[30, '...']}}</th>
                     <td >{{book.author}}</td> 
