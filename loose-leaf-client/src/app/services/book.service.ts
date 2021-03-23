@@ -12,20 +12,20 @@ export class BookService {
 
   getAllBooks() {
     try {
-      return this.httpClient.get(environment.serverURL + "/api/books").toPromise();
+      return this.httpClient.get(environment.serverUrl + "/api/books").toPromise();
     } catch (e) {
       throw new Error(`error getting all books: ${e}`);
     }
   }
 
   getBookByGenre(searchTerm: string) {
-    return this.httpClient.get(environment.serverURL + `/api/books/genre=${searchTerm})`).toPromise();
+    return this.httpClient.get(environment.serverUrl + `/api/books/genre=${searchTerm})`).toPromise();
   }
 
   searchBooks(author: string, genre: string, title: string) {
     if (author || genre || title) {
       this.appendedUrl += '?';
     }
-    return this.httpClient.get(environment.serverURL + this.appendedUrl);
+    return this.httpClient.get(environment.serverUrl + this.appendedUrl);
   }
 }
