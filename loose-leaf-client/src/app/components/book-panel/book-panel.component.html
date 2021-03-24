@@ -1,26 +1,28 @@
-<mat-card class="card">
+<mat-card class="book-card">
   <mat-card-header>
     <mat-card-title aria-label="book?.book?.title">
-      {{ book?.book?.title! | truncate:[22, '...'] }}
+      {{ book?.book?.title! | truncate:[17, '...'] }}
     </mat-card-title>
     <mat-card-subtitle>
-      {{ book?.book?.author! | truncate:[30, '...'] }}
+      {{ book?.book?.author! | truncate:[22, '...'] }}
     </mat-card-subtitle>
-    
+    <span class="fill-remaining-space"></span>
+    <button mat-icon-button (click)="addToWishlist()" *ngIf="!onWishlist"><mat-icon>favorite_border</mat-icon></button>
+    <button mat-icon-button (click)="removeFromWishlist()" *ngIf="onWishlist" color="warn"><mat-icon>favorite</mat-icon></button>
   </mat-card-header>
   <mat-divider></mat-divider>
   <mat-card-content>
-    <div class="row centered">
+    <div class="card-row centered">
       <img class="thumbnail" [src]="book?.book?.thumbnail" alt="book thumbnail">
     </div>
-    <div class="row centered">
+    <div class="card-row centered">
       <h3 class="mat-h3">Condition: {{book?.condition}}</h3>
     </div>
   </mat-card-content>
   <mat-divider></mat-divider>
-    <mat-card-actions class="row">
+    <mat-card-actions class="card-row">
       <h3 class="mat-h3" [ngClass]="getAvailabilityClass()">{{book?.availability}}</h3>
-      <button *ngIf="!beingBorrowed" mat-flat-button color="primary" [disabled]="!canBorrow()" (click)="add()">Add</button>
+      <button *ngIf="!beingBorrowed" mat-flat-button color="primary" [disabled]="!canBorrow()" (click)="add()">Add to Request</button>
       <button *ngIf="beingBorrowed" mat-flat-button color="warn" (click)="remove()">Remove</button>
     </mat-card-actions>
 </mat-card>

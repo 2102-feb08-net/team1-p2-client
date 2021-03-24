@@ -37,5 +37,4 @@ export class UserLoansComponent implements OnInit {
       this.getLoanRequests();
     })
   }
-
 }

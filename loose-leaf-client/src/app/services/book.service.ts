@@ -24,15 +24,14 @@ export class BookService {
   }
 
   searchBooks(title: string, author: string, genre: string) {
-    debugger;
+    this.appendedUrl = "";
+    console.log(`Title: ${title} Author: ${author} Genre: ${genre}`);
     if (title || author || genre) {
       this.appendedUrl += '?';
     }
-    debugger;   
     this.appendedUrl = this.appendedUrl.concat(this.addParamToUrl('title', title))
       .concat(this.addParamToUrl('author', author))
       .concat(this.addParamToUrl('genre', genre));
-    debugger;
     return this.httpClient.get(this.booksUrl.concat(this.appendedUrl));
   }
 }

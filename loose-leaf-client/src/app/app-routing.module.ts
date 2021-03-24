@@ -17,19 +17,23 @@ const routes: Routes = [
   },
   {
     path: "home",
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "books",
-    component: BookSearchComponent
+    component: BookSearchComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "lenders",
-    component: UserSearchComponent
+    component: UserSearchComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "lenders/:username",
-    component: UserDetailsComponent
+    component: UserDetailsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "loans",

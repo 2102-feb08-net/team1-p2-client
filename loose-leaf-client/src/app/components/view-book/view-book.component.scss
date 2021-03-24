@@ -1,12 +1,12 @@
 .book-card {
     width: 300px;
-    height: 400px;
+    height: 350px;
     margin: 10px 10px;
 }
 
 mat-card-content {
-    min-height: 230px;
-    height: 230px;
+    min-height: 180px;
+    height: 180px;
 }
 
 mat-card-footer {
@@ -17,7 +17,6 @@ mat-card-footer {
     display: flex;
     flex-flow: row nowrap;
     width: 100%;
-    // width: 90%;
     justify-content: space-between;
     align-items: baseline;
     padding-left: 15px;
@@ -33,20 +32,11 @@ mat-card-footer {
         width: wrap;
     }
 }
-
-.status-good {
-    color: #06a736;
-}
-
-.status-bad {
-    color: #f10303;
-}
-
-.status-unsure {
-    color: #e7bd00;
-}
-
 .thumbnail {
     min-height: 120px;
     height: 150px;
+}
+
+.add-btn {
+    margin-left: 15px;
 }

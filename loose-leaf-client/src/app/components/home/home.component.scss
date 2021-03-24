@@ -1,0 +1,32 @@
+@use "@material/checkbox"; // Required only for data table with row selection.
+@use "@material/icon-button"; // Required only for data table with column sorting.
+@use "@material/data-table/data-table";
+
+@include checkbox.core-styles;
+@include icon-button.core-styles;
+@include data-table.core-styles;
+@include data-table.theme-baseline;
+
+.centered {
+    text-align: center;
+}
+
+
+
+body {
+    padding-top: 20px;
+}
+
+.carousel-nav-icon {
+    height: 48px;
+    width: 48px;
+ }
+
+ .carousel{
+    background: #2f4357;
+    margin-top: 20px;
+}
+.carousel-item{
+    text-align: center;
+    min-height: 280px; /* Prevent carousel from being distorted if for some reason image doesn't load */
+}
