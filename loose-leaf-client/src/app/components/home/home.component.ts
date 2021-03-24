@@ -6,6 +6,7 @@ import { Book } from 'src/app/interfaces/book';
 import { WishlistService } from 'src/app/services/wishlist.service';
 import { LoanService } from 'src/app/services/loan.service';
 import {Loan } from '../../interfaces/loan-interface';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-home',
@@ -26,7 +27,7 @@ export class HomeComponent implements OnInit {
 
 
 
-  constructor(private wishlistService : WishlistService, private userService: UserService, private loanService: LoanService) { }
+  constructor(private wishlistService : WishlistService, private userService: UserService, private loanService: LoanService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.getWishlist();
@@ -67,10 +68,21 @@ export class HomeComponent implements OnInit {
 
   addBook = () => {
     let c = +this.Condition
-    let id = this.userService.getUserId();
-    this.userService.addUserBook(id, this.ISBN, 1, c).then(
-      () => {return true;},
+    this.userService.addUserBook(this.userService.getUserId(), this.ISBN, 1, c).then(
+      () => {
+        this._snackBar.open('Book successfully added!', 'Close', {
+          duration: 1000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top'
+        });
+        return true;
+      },
       (error) => {
+        this._snackBar.open('Book failed to add...', 'Close', {
+          duration: 1000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top'
+        });
         return false;
       }
     );
