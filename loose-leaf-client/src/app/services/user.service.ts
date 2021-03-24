@@ -1,12 +1,32 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  constructor(private http: HttpClient) { }
+
+  private userId : number | null =  null;
+
+  constructor(private auth : AuthService, private http: HttpClient) { }
+
+  getUserId() : number | null {
+      if(this.userId)
+      {
+        return this.userId;
+      }
+      else
+      {
+        throw new Error('User Id was not calculated correctly.');
+      }
+  }
+
+  calculateUserId() {
+    return this.http.put<number>(environment.serverUrl + `/api/users`, null).subscribe(id => this.userId = id);
+  }
+
 
   getAllUsers() {
     try {
