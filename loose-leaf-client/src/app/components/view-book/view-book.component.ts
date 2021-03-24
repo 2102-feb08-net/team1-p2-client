@@ -50,7 +50,8 @@ export class ViewBookComponent implements OnInit {
 
   add() {
     if (this.addBook != undefined) {
-      this.userOwnsBook = this.addBook(this.book);
+      this.userOwnsBook = true;
+      this.addBook(this.book);
     }
   }
 }
