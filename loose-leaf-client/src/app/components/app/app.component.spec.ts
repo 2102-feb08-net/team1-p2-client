@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AuthService } from '@auth0/auth0-angular';
 import { CookieService } from 'ngx-cookie-service';
 import { AppComponent } from './app.component';
 
@@ -7,6 +8,9 @@ const cookieSpy = jasmine.createSpyObj('CookieService', ['get', 'set']);
 
 describe('AppComponent', () => {
   beforeEach(async () => {
+
+    let fakeAuth = {} as AuthService;
+
     await TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
@@ -15,7 +19,8 @@ describe('AppComponent', () => {
         AppComponent
       ],
       providers: [
-        {provide: CookieService, useValue: cookieSpy}
+        {provide: CookieService, useValue: cookieSpy},
+        {provide: AuthService, useValue: fakeAuth}
       ]
     }).compileComponents();
   });

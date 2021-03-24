@@ -67,8 +67,8 @@ export class HomeComponent implements OnInit {
 
   addBook = () => {
     let c = +this.Condition
-    // TODO: add a real user ID
-    this.userService.addUserBook(1, this.ISBN, 1, c).then(
+    let id = this.userService.getUserId();
+    this.userService.addUserBook(id, this.ISBN, 1, c).then(
       () => {return true;},
       (error) => {
         return false;
