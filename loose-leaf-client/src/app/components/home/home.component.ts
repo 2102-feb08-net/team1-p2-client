@@ -65,11 +65,15 @@ export class HomeComponent implements OnInit {
   }
 
 
-  addBook = (): boolean => {
+  addBook = () => {
     let c = +this.Condition
-    let id = this.userService.getUserId();
-    this.userService.addUserBook(id, this.ISBN, 1, c).then(() => {return true;});
-    return false;
+    // TODO: add a real user ID
+    this.userService.addUserBook(1, this.ISBN, 1, c).then(
+      () => {return true;},
+      (error) => {
+        return false;
+      }
+    );
   }
 
 
