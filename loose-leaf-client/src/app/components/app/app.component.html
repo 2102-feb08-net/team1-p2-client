@@ -5,7 +5,7 @@
     <app-user-profile></app-user-profile>
     <app-auth-button></app-auth-button>
   </mat-toolbar>
-
+  
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav mode="side" opened class="sidenav" [class.wide]="wideSidenav()">
       <button mat-flat-button class="menu-btn" color="" routerLink="/home" routerLinkActive="mat-accent" queryParamsHandling="merge">
@@ -21,11 +21,11 @@
         <mat-icon>person_search</mat-icon>
         <ng-container *ngIf="wideSidenav()">Search Lenders</ng-container>
       </button>
-      <button mat-flat-button class="menu-btn" color="" routerLink="/loans" routerLinkActive="mat-accent" queryParamsHandling="merge">
+      <button *ngIf="auth.isAuthenticated$ | async" mat-flat-button class="menu-btn" color="" routerLink="/loans" routerLinkActive="mat-accent" queryParamsHandling="merge">
         <mat-icon>multiple_stop</mat-icon>
         <ng-container *ngIf="wideSidenav()">My Loans/Requests</ng-container>
       </button>
-      <button mat-flat-button class="menu-btn" color="" routerLink="/wishlist" routerLinkActive="mat-accent" queryParamsHandling="merge">
+      <button *ngIf="auth.isAuthenticated$ | async" mat-flat-button class="menu-btn" color="" routerLink="/wishlist" routerLinkActive="mat-accent" queryParamsHandling="merge">
         <mat-icon>favorite</mat-icon>
         <ng-container *ngIf="wideSidenav()">My Wishlist</ng-container>
       </button>

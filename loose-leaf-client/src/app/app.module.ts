@@ -43,6 +43,7 @@ import { ActivityButtonComponent } from './components/activity-button/activity-b
 import { WishlistService } from './services/wishlist.service';
 import { LoanService } from './services/loan.service';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { LoginComponent } from './components/login/login.component';
 import { LocalTimePipe } from './pipes/localtime.pipe';
 import { ViewBookComponent } from './components/view-book/view-book.component';
 
@@ -64,6 +65,7 @@ import { ViewBookComponent } from './components/view-book/view-book.component';
     LocalTimePipe,
     RequestModalComponent,
     ActivityButtonComponent,
+    LoginComponent,
     ViewBookComponent,
   ],
   imports: [
