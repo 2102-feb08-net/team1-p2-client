@@ -63,20 +63,16 @@
 
   
   <div class="rounded container p-5 text-center shadow-lg" style="border-top:3px solid #2f4357 ">
-    <h5>Add Your Book To Loan</h5>
+    <h5>Add Your Book</h5>
     <form shadow-lg>
       <div class="form-group ">
         <label for="exampleInputEmail1" >ISBN</label>
-        <input type="number" class="form-control shadow-lg" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter ISBN">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Availablity</label>
-        <input type="text" class="form-control shadow-lg" id="exampleInputPassword1" placeholder="Enter Availablity">
+        <input type="number" [(ngModel)]="ISBN" [ngModelOptions]="{standalone: true}"  class="form-control shadow-lg" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter ISBN">
       </div>
       <div class="form-group">
         <label for="selectionid">Condition</label>
-        <select id="selectionid" class="custom-select" multiple>
-          <option selected>Open this select menu</option>
+        <select [(ngModel)]="Condition" [ngModelOptions]="{standalone: true}" id="selectionid" class="custom-select" >
+          
           <option value="1">Like New</option>
           <option value="2">Very Good</option>
           <option value="3"> Good</option>
@@ -84,7 +80,7 @@
           <option value="5">Poor</option>
         </select>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" (click)="addBook()" class="btn btn-primary">Submit</button>
     </form>
 </div>
 
