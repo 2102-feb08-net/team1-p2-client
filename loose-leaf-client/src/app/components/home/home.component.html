@@ -144,7 +144,7 @@
                   <tr >
                     <th >{{book.title | truncate:[30, '...']}}</th>
                     <td >{{book.author}}</td> 
-                    <td *ngFor="let genre of book.genres"><p>{{genre}}</p></td>            
+                    <td ><p *ngFor="let genre of book.genres">{{genre}}</p></td>            
                <!--     <td class="mdc-data-table__cell">{{book.isbn}}</td>-->
                 
                   </tr>
