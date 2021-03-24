@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Book } from 'src/app/interfaces/book';
 import { OwnedBook } from 'src/app/interfaces/owned-book-interface';
+import { UserService } from 'src/app/services/user.service';
 import { WishlistService } from 'src/app/services/wishlist.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class BookPanelComponent implements OnInit {
   beingBorrowed: boolean = false;
   userwishlist: Book[] = [];
   onWishlist: boolean = false;
-  constructor(private wishlistService: WishlistService) {
+  constructor(private userService: UserService, private wishlistService: WishlistService) {
 
   }
 
@@ -24,8 +25,8 @@ export class BookPanelComponent implements OnInit {
   }
 
   private _getWishlist() {
-    // TODO: add a real user ID
-    this.wishlistService.getWishlist(1).subscribe(resp => {
+    let id = this.userService.getUserId();
+    this.wishlistService.getWishlist(id).subscribe(resp => {
       this.userwishlist = resp;
       this.onWishlist = this.isOnWishlist();
     });
@@ -63,15 +64,15 @@ export class BookPanelComponent implements OnInit {
   }
 
   addToWishlist() {
-    // TODO: add a real user ID
+    let id = this.userService.getUserId();
     this.onWishlist = true;
-    this.wishlistService.addBookToWishlist(1, this.book.id).toPromise().then(() => this._getWishlist());
+    this.wishlistService.addBookToWishlist(id, this.book.id).toPromise().then(() => this._getWishlist());
   }
 
   removeFromWishlist() {
-    // TODO: add a real user ID
+    let id = this.userService.getUserId();
     this.onWishlist = false;
-    this.wishlistService.removeBookFromWishlist(1, this.book.id).toPromise().then(() => this._getWishlist());
+    this.wishlistService.removeBookFromWishlist(id, this.book.id).toPromise().then(() => this._getWishlist());
   }
 
   isOnWishlist() {

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ViewBookComponent } from './view-book.component';
@@ -6,9 +7,14 @@ describe('ViewBookComponent', () => {
   let component: ViewBookComponent;
   let fixture: ComponentFixture<ViewBookComponent>;
 
+  const fakeClient = jasmine.createSpyObj('HttpClient', ['get'])
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ViewBookComponent ]
+      declarations: [ ViewBookComponent ],
+      providers: [
+        {provide: HttpClient, useValue: fakeClient}
+      ],
     })
     .compileComponents();
   });

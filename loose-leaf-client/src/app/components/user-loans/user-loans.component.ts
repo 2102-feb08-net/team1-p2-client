@@ -3,6 +3,7 @@ import { LoanService } from 'src/app/services/loan.service';
 import {Loan } from '../../interfaces/loan-interface';
 
 import {MDCDataTable} from '@material/data-table';
+import { UserService } from 'src/app/services/user.service';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class UserLoansComponent implements OnInit {
 
   public loans : Loan[] = [];
   public pendingLoans : Loan[] = [];
-  constructor(private loanService: LoanService) { }
+  constructor(private userService: UserService, private loanService: LoanService) { }
 
   ngOnInit(): void {
     this.getLoans();
@@ -22,12 +23,14 @@ export class UserLoansComponent implements OnInit {
   }
 
   getLoans(){
-    this.loanService.getUserLoans(1)
+    let id = this.userService.getUserId();
+    this.loanService.getUserLoans(id)
     .subscribe(loans => this.loans = loans);
   }
 
   getLoanRequests() {
-    this.loanService.getUserLoanRequests(1).subscribe(requests => this.pendingLoans = requests);
+    let id = this.userService.getUserId();
+    this.loanService.getUserLoanRequests(id).subscribe(requests => this.pendingLoans = requests);
   }
 
   updateLoanStatus(loanId : number, status : number)

@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LoanRequest } from 'src/app/interfaces/loan-interface';
 import { OwnedBook } from 'src/app/interfaces/owned-book-interface';
 import { LoanService } from 'src/app/services/loan.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-request-modal',
@@ -17,7 +18,7 @@ export class RequestModalComponent implements OnInit {
   zipCode: string = "";
   message: string = "";
 
-  constructor(private dialogRef: MatDialogRef<RequestModalComponent>, @Inject(MAT_DIALOG_DATA) public data: OwnedBook[], private loanService: LoanService) { }
+  constructor(private dialogRef: MatDialogRef<RequestModalComponent>, @Inject(MAT_DIALOG_DATA) public data: OwnedBook[],  private userService: UserService, private loanService: LoanService) { }
 
   ngOnInit(): void {
   }
@@ -30,7 +31,7 @@ export class RequestModalComponent implements OnInit {
 
       let request: LoanRequest = {
         lenderId: this.data[0].ownerId,
-        borrowerId: 4, //TODO: make this something not static
+        borrowerId: this.userService.getUserId(),
         ownedBookIds: this.getBookIds(this.data),
         startDate: now.toJSON(),
         endDate: then.toJSON(),

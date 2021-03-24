@@ -13,7 +13,8 @@ export class UserService {
 
   constructor(private auth : AuthService, private http: HttpClient) { }
 
-  getUserId() : number | null {
+  getUserId() : number {
+    //return this.http.post<number>(environment.serverUrl + `/api/users`, null);
       if(this.userId)
       {
         return this.userId;
@@ -25,7 +26,7 @@ export class UserService {
   }
 
   calculateUserId() {
-    return this.http.put<number>(environment.serverUrl + `/api/users`, null).subscribe(id => this.userId = id);
+    return this.http.post<number>(environment.serverUrl + `/api/users`, null).subscribe(id => this.userId = id);
   }
 
 

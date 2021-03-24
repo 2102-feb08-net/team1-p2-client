@@ -35,8 +35,8 @@ export class BookSearchComponent implements OnInit {
   }
 
   addBook = (book: Book): boolean => {
-    // TODO: add a real user ID
-    this.userService.addUserBook(1, book.isbn, 1, 1).then(() => {return true;});
+    let id = this.userService.getUserId();
+    this.userService.addUserBook(id, book.isbn, 1, 1).then(() => {return true;});
     return false;
   }
 

@@ -38,20 +38,23 @@ export class HomeComponent implements OnInit {
 
   getWishlist()
   {
-    this.wishlistService.getWishlist(1)
+    let id = this.userService.getUserId();
+    this.wishlistService.getWishlist(id)
       .subscribe(b => this.wishlistBooks = b);
       
   }
 
   getRecommendationLlist() {
    
-    this.userService.getRecommendedBooks(1)
+    let id = this.userService.getUserId();
+    this.userService.getRecommendedBooks(id)
       .subscribe(b => this.recommendedBooks = b);
 
       
   }
   getUserLoans(){
-    this.loanService.getUserLoans(1)
+    let id = this.userService.getUserId();
+    this.loanService.getUserLoans(id)
       .subscribe(loans => {
         this.loans = loans;
         
@@ -64,8 +67,8 @@ export class HomeComponent implements OnInit {
 
   addBook = (): boolean => {
     let c = +this.Condition
-    // TODO: add a real user ID
-    this.userService.addUserBook(1, this.ISBN, 1, c).then(() => {return true;});
+    let id = this.userService.getUserId();
+    this.userService.addUserBook(id, this.ISBN, 1, c).then(() => {return true;});
     return false;
   }
 
