@@ -26,7 +26,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { BookPanelComponent } from './components/book-panel/book-panel.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
@@ -87,6 +88,7 @@ import { ViewBookComponent } from './components/view-book/view-book.component';
     MatDialogModule,
     MatListModule,
     MatProgressSpinnerModule,
+    MatSnackBarModule,
     ReactiveFormsModule,
     AuthModule.forRoot({
       domain: env.domain,
