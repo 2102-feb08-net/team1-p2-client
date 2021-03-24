@@ -38,20 +38,23 @@ export class HomeComponent implements OnInit {
 
   getWishlist()
   {
-    this.wishlistService.getWishlist(1)
+    let id = this.userService.getUserId();
+    this.wishlistService.getWishlist(id)
       .subscribe(b => this.wishlistBooks = b);
       
   }
 
   getRecommendationLlist() {
    
-    this.userService.getRecommendedBooks(1)
+    let id = this.userService.getUserId();
+    this.userService.getRecommendedBooks(id)
       .subscribe(b => this.recommendedBooks = b);
 
       
   }
   getUserLoans(){
-    this.loanService.getUserLoans(1)
+    let id = this.userService.getUserId();
+    this.loanService.getUserLoans(id)
       .subscribe(loans => {
         this.loans = loans;
         

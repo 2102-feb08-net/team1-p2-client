@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from 'src/app/interfaces/book';
+import { UserService } from 'src/app/services/user.service';
 import { WishlistService } from 'src/app/services/wishlist.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class WishlistComponent implements OnInit {
 
   public wishlistBooks : Book[] = [];
 
-  constructor(private wishlistService : WishlistService) { }
+  constructor(private userService: UserService, private wishlistService : WishlistService) { }
 
   ngOnInit(): void {
     this.getWishlist();
@@ -19,13 +20,15 @@ export class WishlistComponent implements OnInit {
 
   getWishlist()
   {
-    this.wishlistService.getWishlist(1)
+    let id = this.userService.getUserId();
+    this.wishlistService.getWishlist(id)
     .subscribe(b => this.wishlistBooks = b);
   }
 
   removeBookFromWishlist(bookId : number)
   {
-    this.wishlistService.removeBookFromWishlist(1, bookId)
+    let id = this.userService.getUserId();
+    this.wishlistService.removeBookFromWishlist(id, bookId)
     .subscribe(b => this.getWishlist());
   }
 
