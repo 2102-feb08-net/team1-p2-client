@@ -1,3 +1,4 @@
+import { ISBN } from './../../interfaces/book';
 import { OwnedBook } from './../../interfaces/owned-book-interface';
 import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit } from '@angular/core';
@@ -16,7 +17,15 @@ export class HomeComponent implements OnInit {
   public recommendedBooks: Book[] = [];
   public loans: Loan[] = [];
   public firstfiveloans: Loan[] = [];
-  public firstfivewishlist : Book[] = [];
+  public firstfivewishlist: Book[] = [];
+  public ISBN:ISBN;
+  public Condition:string;
+
+
+
+
+
+
   constructor(private wishlistService : WishlistService, private userService: UserService, private loanService: LoanService) { }
 
   ngOnInit(): void {
@@ -50,6 +59,14 @@ export class HomeComponent implements OnInit {
         this.firstfivewishlist = this.wishlistBooks.slice(Math.max(loans.length - 5, 0));
       
       });
+  }
+
+
+  addBook = (): boolean => {
+    let c = +this.Condition
+    // TODO: add a real user ID
+    this.userService.addUserBook(1, this.ISBN, 1, c).then(() => {return true;});
+    return false;
   }
 
 
