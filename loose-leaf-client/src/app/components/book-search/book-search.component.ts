@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { Book } from '../../interfaces/book';
 import { BookService } from '../../services/book.service';
-import { MatDialog } from '@angular/material/dialog';
-import { RequestModalComponent } from 'src/app/modals/request-modal/request-modal.component';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-book-search',
@@ -18,7 +17,7 @@ export class BookSearchComponent implements OnInit {
   selectedBooks: Book[] = [];
   genreList: string[];
 
-  constructor(private readonly bookService: BookService, private dialog: MatDialog) {
+  constructor(private readonly bookService: BookService, private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -26,15 +25,19 @@ export class BookSearchComponent implements OnInit {
 
   search() {
     this.bookService.searchBooks(this.searchTitle.value, this.searchAuthor.value,
-      this.searchGenre.value).subscribe((response) => {
-        this.bookList = this.bookList.concat(response as Book);
-    })
+      this.searchGenre.value).toPromise().then((response) => {
+        this.bookList = response as Book[];
+        this.searchTitle.setValue("");
+        this.searchAuthor.setValue("");
+        this.searchGenre.setValue("");
+    });
+    
   }
 
   addBook = (book: Book): boolean => {
-    this.selectedBooks.push(book);
-    console.log(this.selectedBooks);
-    return true;
+    // TODO: add a real user ID
+    this.userService.addUserBook(1, book.isbn, 1, 1).then(() => {return true;});
+    return false;
   }
 
   removeBook = (book: Book): boolean => {

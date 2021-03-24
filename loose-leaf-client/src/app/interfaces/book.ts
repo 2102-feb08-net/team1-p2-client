@@ -9,6 +9,6 @@ export interface Book {
   thumbnail: string;
 }
 
-interface ISBN {
+export interface ISBN {
   isbnValue: string;
 }

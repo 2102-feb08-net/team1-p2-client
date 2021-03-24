@@ -24,6 +24,8 @@ export class BookService {
   }
 
   searchBooks(title: string, author: string, genre: string) {
+    this.appendedUrl = "";
+    console.log(`Title: ${title} Author: ${author} Genre: ${genre}`);
     if (title || author || genre) {
       this.appendedUrl += '?';
     }
