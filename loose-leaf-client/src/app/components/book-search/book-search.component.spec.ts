@@ -13,7 +13,6 @@ describe('BookSearchComponent', () => {
     'getAllBooks' : new Promise(a => a),
   });
 
-
   const clientSpy = jasmine.createSpyObj('HttpClient', ['get']);
 
   const formSpy = jasmine.createSpyObj('FormBuilder', ['group']);
