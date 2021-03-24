@@ -43,6 +43,7 @@ import { ActivityButtonComponent } from './components/activity-button/activity-b
 import { WishlistService } from './services/wishlist.service';
 import { LoanService } from './services/loan.service';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
     PossessivePipe,
     RequestModalComponent,
     ActivityButtonComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
