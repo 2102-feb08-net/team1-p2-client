@@ -30,14 +30,6 @@ To-do list:
 * Clean up genres so that they match the given book
 
 ## Getting Started
-   
-(include git clone command)
-(include all environment setup steps)
-
-> Be sure to include BOTH Windows and Unix command  
-> Be sure to mention if the commands only work on a specific platform (eg. AWS, GCP)
-
-> The program must use SQL server, other SQL variations may not work.
 
 - Run the command `git clone https://github.com/2102-feb08-net/team1-p2-client` to clone the repository.
 - In the Angular project, run `npm install`
