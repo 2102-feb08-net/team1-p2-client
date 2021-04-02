@@ -33,7 +33,7 @@ To-do list:
 
 - Run the command `git clone https://github.com/2102-feb08-net/team1-p2-client` to clone the repository.
 - In the Angular project, run `npm install`
-- Finally, run `ng server --open` to run the application in your web browser and bring you to Loose Leaf Community.
+- Finally, run `ng serve --open` to run the application in your web browser and bring you to Loose Leaf Community.
 
 ## Usage
 
